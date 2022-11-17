@@ -1,0 +1,27 @@
+<div class="directFilter">
+    <div class="boxWithRightArrow seeMe">See me</div>
+    <div class="boldFont filterHeader">Sort By</div>
+    <div class="boxWithRightArrow borderTop bestClick">Best click</div>
+    <div class="boxWithRightArrow intermediateTime">Intermediate time</div>
+    <div class="boxWithRightArrow shortestTime">Shortest time</div>
+    <div class="boxWithRightArrow iPreferred">I preferred</div>
+</div>
+
+
+$('.directFilter').click(function() {
+
+        alert($(this).attr('class')); //alerts directFilter 
+
+            if ( $( this ).hasClass( "seeMe" ) ) {
+                alert("see me");
+            } else if ($(this).hasClass("bestClick")) {
+                alert("b click");
+            } else if ($(this).hasClass("intermediateTime")) {
+                alert("itime");
+            } else if ($(this).hasClass("shortestTime")) {
+                alert("s time");
+            } else if ($(this).hasClass("iPreferred")) {
+                alert("i pre");
+            }
+}
+    );
