@@ -50,22 +50,179 @@
 
   <content class="row w-100">
         <div class="main-play col-12 col-lg-7">
-            <div class="container">
-                
+            <div class="container vertical-scrollable">
+              <div class="row text-right">
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+              </div>
             </div>
 
             <div class="control">
-                <i class="bi bi-caret-left icon-color"></i>
-                <i class="bi bi-play-circle icon-color"></i>
-                <i class="bi bi-caret-right icon-color"></i>
+                <i class="bi bi-caret-left icon-color random-color"></i>
+                <i class="bi bi-play-circle icon-color random-color"></i>
+                <i class="bi bi-caret-right icon-color random-color"></i>
                 <i class="bi bi-heart icon-color"></i>
             </div>
+            <script>
+                var icon = document.getElementsByClassName('random-color');
+                for (var i = 0; i < icon.length; i++) {
+                    icon[i].onmouseover = function(e) {
+                        this.style['color'] = '#' + Math.floor(Math.random()*16777215).toString(16);
+                    }
+                    icon[i].onmouseout = function(e) {
+                        this.style['color'] = '#000';
+                    } 
+                }
+            </script>
         </div>
 
         <div class="sub-play col-12 col-lg-5">
-            <div class="lists">
-                Empty
-            </div>
+            <div class="container vertical-scrollable">
+                <div class="row text-right">
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                  <li class="item">
+                      <p><b>Tên bài hát</b></p>
+                      <p>Tên tác giả</p>
+                  </li>
+                </div>
+              </div>
         </div>
   </content>
 </body>

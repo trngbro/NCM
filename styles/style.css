@@ -76,8 +76,8 @@ button{
     color: white;
     letter-spacing: 1px;
     cursor: pointer;
-  }
-  .alert{
+}
+.alert{
     background: #ffdb9b;
     padding: 20px 40px;
     min-width: 420px;
@@ -89,59 +89,59 @@ button{
     overflow: hidden;
     opacity: 0;
     pointer-events: none;
-  }
-  .alert.showAlert{
+}
+.alert.showAlert{
     opacity: 1;
     pointer-events: auto;
-  }
-  .alert.show{
+}
+.alert.show{
     animation: show_slide 1s ease forwards;
-  }
-  @keyframes show_slide {
+}
+@keyframes show_slide {
     0%{
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
     40%{
-      transform: translateX(-10%);
+        transform: translateX(-10%);
     }
     80%{
-      transform: translateX(0%);
+        transform: translateX(0%);
     }
     100%{
-      transform: translateX(-10px);
+        transform: translateX(-10px);
     }
-  }
-  .alert.hide{
+}
+.alert.hide{
     animation: hide_slide 1s ease forwards;
-  }
-  @keyframes hide_slide {
+}
+@keyframes hide_slide {
     0%{
-      transform: translateX(-10px);
+        transform: translateX(-10px);
     }
     40%{
-      transform: translateX(0%);
+        transform: translateX(0%);
     }
     80%{
-      transform: translateX(-10%);
+        transform: translateX(-10%);
     }
     100%{
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
-  }
-  .alert .fa-exclamation-circle{
+}
+.alert .fa-exclamation-circle{
     position: absolute;
     left: 20px;
     top: 50%;
     transform: translateY(-50%);
     color: #ce8500;
     font-size: 30px;
-  }
-  .alert .msg{
+}
+.alert .msg{
     padding: 0 20px;
     font-size: 18px;
     color: #ce8500;
-  }
-  .alert .close-btn{
+}
+.alert .close-btn{
     position: absolute;
     right: 0px;
     top: 50%;
@@ -149,15 +149,16 @@ button{
     background: #ffd080;
     padding: 20px 18px;
     cursor: pointer;
-  }
-  .alert .close-btn:hover{
+}
+.alert .close-btn:hover{
     background: #ffc766;
-  }
-  .alert .close-btn .fas{
+}
+.alert .close-btn .fas{
     color: #ce8500;
     font-size: 22px;
     line-height: 40px;
-  }
+}
+
 /* Suggestion */
 content {
     padding-top: 20px;
@@ -188,6 +189,8 @@ content .main-content .suggest .item img {
 }
 
 /*  */
+
+
 
 content .main-content .new {
     width: 100%;
@@ -316,12 +319,6 @@ content .main-content .item p {
 
 /* Play PHP */
 
-content .main-play .container {
-    width: 95%;
-    height: 50vh;
-    background-color: #eee;
-    border-radius: 10px;
-}
 
 content .main-play .control {
     width: 100%;
@@ -332,12 +329,8 @@ content .main-play .control i {
     font-size: 40px;
 }
 
-content .main-play .control .bi:hover {
-    color: #fddddd;
-}
-
 content .main-play .control .bi-play-circle {
-    padding: 0 10%;
+    margin: 0 10%;
 }
 
 content .main-play .control .bi-heart {
@@ -345,11 +338,91 @@ content .main-play .control .bi-heart {
     padding-right: 20px;
 }
 
-content .sub-play .lists {
+content .main-play .control .bi-heart:hover {
+    color: red;
+}
+
+content .sub-play .container {
     width: 90%;
     height: 90vh;
     background-color: #eee;
     border-radius: 10px;
+    padding-left: 40px;
+    display: flex;
+    overflow: auto;
+    scroll-behavior: smooth;
 }
 
 
+content .main-play .container {
+    width: 95%;
+    height: 50vh;
+    background-color: #eee;
+    border-radius: 10px;
+    padding-left: 40px;
+    display: flex;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+content .main-play .container::-webkit-scrollbar {
+    width: 10px;
+}
+
+content .main-play .container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px white; 
+    border-radius: 10px;
+}
+
+content .main-play .container::-webkit-scrollbar-thumb {
+    background: #dcc2c2; 
+    border-radius: 10px;
+}
+
+content .main-play .container::-webkit-scrollbar-thumb:hover {
+    background: #fddddd; 
+}
+
+content .main-play .container .row .item{
+    min-height: 100px;
+    list-style-type: none;
+    margin-right: 10px;
+}
+
+content .sub-play .container::-webkit-scrollbar {
+    width: 10px;
+}
+
+content .sub-play .container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px white; 
+    border-radius: 10px;
+}
+
+content .sub-play .container::-webkit-scrollbar-thumb {
+    background: #dcc2c2; 
+    border-radius: 10px;
+}
+
+content .sub-play .container::-webkit-scrollbar-thumb:hover {
+    background: #fddddd; 
+}
+
+content .sub-play .container .row .item{
+    max-width: 100%;
+    min-height: 100px;
+    list-style-type: none;
+    margin-right: 10px;
+}  
+
+content .main-play .container .row .item:first-child {
+    margin-top: 20px;
+}
+
+content .sub-play .container .row .item:first-child {
+    margin-top: 20px;
+}
+
+content .main-play .container .row li:hover {
+    background: #eee;
+    color: #8b6767;
+}
