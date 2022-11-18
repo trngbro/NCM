@@ -42,6 +42,14 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="./">Đăng xuất</a></li>
             </ul>
+            <script>
+                if (new Date().getHours() >= 12) {
+                    document.getElementById("welcome").innerHTML = "Chào buổi chiều!";
+                }
+                if (new Date().getHours() >= 18 && new Date().getHours <= 3) {
+                    document.getElementById("welcome").innerHTML = "Chào buổi tối!";
+                }
+            </script>
           </div>
         </div>
       </div>
