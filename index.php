@@ -80,11 +80,6 @@
   </div>
 
   <content class="row w-100">
-    <script>
-      $(".item").click(function(){
-        alert('Hi!');
-      });
-    </script>
     <div class="main-content col-12 col-lg-9">
       <h2>Nhạc gợi ý cho bạn</h2>
 
