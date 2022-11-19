@@ -239,6 +239,14 @@ content .main-content .new .item img {
     width: 100%;
 }
 
+content .main-content .item:active {
+    color: #eee;
+}
+
+content .sub-content .BXH .songItem:active {
+    color: white
+}
+
 
 /* BXH */
 
@@ -472,4 +480,21 @@ content .sub-play .container .row li i {
     left: 100%;
     bottom: 60%;
     font-size: 20px;
+}
+
+/*  */
+
+content .edit-area .container {
+    width: 95%;
+    height: auto;
+    background-color: #eee;
+    border-radius: 10px;
+    padding-left: 40px;
+    display: flex;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+content .edit-area .container .row .input {
+    width: 100%;
 }
