@@ -2,16 +2,15 @@
 <html lang="vi">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel='stylesheet' href='styles/style.css'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Music</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel='stylesheet' href='styles/style.css'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Music</title>
 </head>
 
 <body>
@@ -42,10 +41,10 @@
       </div>
     </nav>
   </div>
-  <div class="silder"   style="background-color: #eee;">
+  <div class="silder" style="background-color: #eee;">
     <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000"   style="background-color: #fddddd;"e>
+        <div class="carousel-item active" data-bs-interval="10000" style="background-color: #fddddd;" e>
           <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>First slide label</h5>
@@ -85,97 +84,73 @@
 
       <div class="suggest">
         <li class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</p>
           <p>Ca si 1</p>
         </li>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 3</p>
           <p>Ca si 3</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 1</p>
           <p>Ca si 1</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 3</p>
           <p>Ca si 3</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 1</p>
           <p>Ca si 1</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 3</p>
           <p>Ca si 3</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 1</p>
           <p>Ca si 1</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
@@ -184,97 +159,73 @@
       <h2>Nhạc mới tải lên</h2>
       <div class="new">
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 1</p>
           <p>Ca si 1</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 3</p>
           <p>Ca si 3</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 1</p>
           <p>Ca si 1</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 3</p>
           <p>Ca si 3</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 1</p>
           <p>Ca si 1</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 3</p>
           <p>Ca si 3</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 1</p>
           <p>Ca si 1</p>
         </div>
 
         <div class="item">
-          <img
-            src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg"
-            alt="">
+          <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
           <p>Bai hat 2</p>
           <p>Ca si 2</p>
         </div>

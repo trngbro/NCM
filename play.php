@@ -20,28 +20,28 @@
                 <img src="./src/logo.png" alt="logo" style="width: 25px">
                 <a href="./" class="navbar-brand">NCM</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Tìm kiếm bài hát">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" type="button">
-                  <i class="bi bi-search"></i>
-                </button>
+                                    <i class="bi bi-search"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                     <div class="btn-group navbar-nav ms-auto">
-                        <a class="nav-item nav-link item-none">Chào buổi sáng!</a>
+                        <a class="nav-item nav-link item-none" id="welcome">Chào buổi sáng!</a>
                         <button type="button" class="btn dropdown-toggle users-log" data-bs-toggle="dropdown"></button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Nguyen Trung Nghia</a></li>
+                            <li><a class="dropdown-item" href="#"><span><?php echo $_SESSION['name'] ?></span></a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="./">Đăng xuất</a></li>
+                            <li><a class="dropdown-item" href="./logout.php">Đăng xuất</a></li>
                         </ul>
                         <script>
                             if (new Date().getHours() >= 12) {

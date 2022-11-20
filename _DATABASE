@@ -1,0 +1,8 @@
+music(root,null)
+
+accounts:
+    id(int 255) -> AI
+    email(varchar 255)
+    password(varchar 255)
+    name(varchar 255)
+    usertype(varchar 255) -> defaut as user

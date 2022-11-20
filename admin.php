@@ -1,3 +1,15 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if(!isset($_SESSION['adname'])){
+   header('location:signin.php');
+}
+
+?>
+
 <!doctype html>
 <html lang="vi">
 
@@ -5,14 +17,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel='stylesheet' href='styles/style.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
     <title>Music</title>
 </head>
@@ -38,14 +48,14 @@
                         </div>
                     </div>
                     <div class="btn-group navbar-nav ms-auto">
-                        <a class="nav-item nav-link item-none">Chào buổi sáng!</a>
+                        <a class="nav-item nav-link item-none" id="welcome">Chào buổi sáng!</a>
                         <button type="button" class="btn dropdown-toggle users-log" data-bs-toggle="dropdown"></button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Nguyen Trung Nghia</a></li>
+                            <li><a class="dropdown-item" href="#"> <span><?php echo $_SESSION['adname'] ?></span></a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="./">Đăng xuất</a></li>
+                            <li><a class="dropdown-item" href="./logout.php">Đăng xuất</a></li>
                         </ul>
                         <script>
                             if (new Date().getHours() >= 12) {
@@ -94,28 +104,26 @@
                     </div>
 
                     <div class="d-flex justify-content-around">
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-submit"
-                            type="submit">Cập nhật</button>
-                        <button class="btn btn-primary btn-block fa-lg mb-3 btn-submit btn-outline-danger" type="button"
-                            data-bs-toggle="modal" data-bs-target="#confirm" confirm="Xác nhận xoá vv" style="color: #fff;">Xóa</button>
-                                <!-- The Modal -->
-                                <div class="modal" id="confirm">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Xác nhận xoá vĩnh viễn</h4>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Không thể hoàn tác sau khi xác nhận, thận trọng nhé!
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận</button>
-                                            </div>
-
-                                        </div>
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-submit" type="submit">Cập nhật</button>
+                        <button class="btn btn-primary btn-block fa-lg mb-3 btn-submit btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#confirm" confirm="Xác nhận xoá vv" style="color: #fff;">Xóa</button>
+                        <!-- The Modal -->
+                        <div class="modal" id="confirm">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Xác nhận xoá vĩnh viễn</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
+                                    <div class="modal-body">
+                                        Không thể hoàn tác sau khi xác nhận, thận trọng nhé!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận</button>
+                                    </div>
+
                                 </div>
+                            </div>
+                        </div>
                     </div>
                     <style>
                         .gradient-custom-2 {
