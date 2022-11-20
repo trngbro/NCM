@@ -54,7 +54,7 @@ if(isset($_POST['submit'])){
 <body>
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fddddd;">
-            <img src="./src/logo.png" alt="logo" style="width: 25px; margin: 0 20px;">
+            <img src="./img/logo.png" alt="logo" style="width: 25px; margin: 0 20px;">
             <a href="./" class="navbar-brand">NCM</a>
         </nav>
     </div>
@@ -137,7 +137,7 @@ if(isset($_POST['submit'])){
                         </div>
                         <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                             <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                <img src="./src/logo.png" alt="logo" style="width:100%">
+                                <img src="./img/logo.png" alt="logo" style="width:100%">
                             </div>
                         </div>
                     </div>

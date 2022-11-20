@@ -2,6 +2,12 @@
 
 @include 'config.php';
 
+session_start();
+
+if(!isset($_SESSION['adname'])){
+   header('location:signin.php');
+}
+
 if(isset($_POST['submit'])){
 
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -22,9 +28,9 @@ if(isset($_POST['submit'])){
         if($pass != $cpass){
             $error[] = 'Các mật khẩu không khớp!';
         }else{
-            $insert = "INSERT INTO accounts(name, email, password, user_type) VALUES('$name','$email','$pass','user')";
+            $insert = "INSERT INTO accounts(name, email, password, user_type) VALUES('$name','$email','$pass','admin')";
             mysqli_query($conn, $insert);
-            header('location:signin.php');
+            header('location:admin.php');
         }
     }
 
@@ -46,16 +52,60 @@ if(isset($_POST['submit'])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./styles/alert.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel='stylesheet' href='styles/style.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <title>Music</title>
     <script src="./cute-alert-master/cute-alert.js"></script>
 
     <title>Music</title>
 </head>
 
 <body>
-    <div class="header">
+<div class="header">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fddddd;">
-            <img src="./img/logo.png" alt="logo" style="width: 25px; margin: 0 20px;">
-            <a href="./" class="navbar-brand">NCM</a>
+            <div class="container-fluid">
+                <img src="./img/logo.png" alt="logo" style="width: 25px">
+                <a href="./" class="navbar-brand">NCM</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <div class="input-group">
+                            
+                        </div>
+                    </div>
+                    <div class="btn-group navbar-nav ms-auto">
+                        <a class="nav-item nav-link item-none" id="welcome">Chào buổi sáng!</a>
+                        <button type="button" class="btn dropdown-toggle users-log" data-bs-toggle="dropdown"></button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> <span><?php echo $_SESSION['adname'] ?></span></a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./play.php">Chơi nhạc</a></li>
+                            <?php
+                                if(isset($_SESSION['adname'])){
+                                    echo '<li><a class="dropdown-item" href="./admin.php">Quản trị bài hát</a></li>';
+                                }
+                            ?>
+                            <li><a class="dropdown-item" href="./logout.php">Đăng xuất</a></li>
+                        </ul>
+                        <script>
+                            if (new Date().getHours() >= 12) {
+                                document.getElementById("welcome").innerHTML = "Chào buổi chiều!";
+                            }
+                            if (new Date().getHours() >= 18 && new Date().getHours <= 3) {
+                                document.getElementById("welcome").innerHTML = "Chào buổi tối!";
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
         </nav>
     </div>
     <section class="w-100 p-4 p-xl-5" style="background-color: #eee; border-radius: .5rem .5rem 0 0;">
@@ -113,7 +163,7 @@ if(isset($_POST['submit'])){
                         <div class="col-lg-6">
                             <div class="card-body p-md-5 mx-md-4">
 
-                                <h4 class="mt-1 mb-5 pb-1">Đăng ký</h4>
+                                <h4 class="mt-1 mb-5 pb-1">Đăng ký (Giành cho quản trị viên)</h4>
 
                                 <form action="" method="POST" onSubmit = "return checkPassword(this)">
 
@@ -164,7 +214,7 @@ if(isset($_POST['submit'])){
                                             foreach($error as $error){
                                                 echo '<span class="error-msg row justify-content-center">'.$error.'</span>';
                                             };
-                                        };
+                                        }; 
                                         ?>
                                     </div>
 

@@ -1,3 +1,19 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if(!isset($_SESSION['name'])){
+    if(!isset($_SESSION['adname'])){
+        header('location:signin.php');
+    }
+
+    $_SESSION['name'] = $_SESSION['adname'];
+}
+
+?>
+
 <!doctype html>
 <html lang="vi">
 
@@ -17,7 +33,7 @@
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fddddd;">
             <div class="container-fluid">
-                <img src="./src/logo.png" alt="logo" style="width: 25px">
+                <img src="./img/logo.png" alt="logo" style="width: 25px">
                 <a href="./" class="navbar-brand">NCM</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -41,6 +57,11 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
+                            <?php
+                                if(isset($_SESSION['adname'])){
+                                    echo '<li><a class="dropdown-item" href="./admin.php">Quản trị bài hát</a></li>';
+                                }
+                            ?>
                             <li><a class="dropdown-item" href="./logout.php">Đăng xuất</a></li>
                         </ul>
                         <script>

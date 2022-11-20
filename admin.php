@@ -8,6 +8,48 @@ if(!isset($_SESSION['adname'])){
    header('location:signin.php');
 }
 
+if(isset($_POST["submit"])){
+    $filename = mysqli_real_escape_string($conn, $_POST['filename']);
+    $fileown  = mysqli_real_escape_string($conn, $_POST['fileown']);
+    $filelyrics = mysqli_real_escape_string($conn, $_POST['filelyrics']);
+
+    if($_FILES["filemp3"]["error"] == 4){
+        echo '<script> swal("Lỗi tải lên nhạc!"); </script>';
+    }
+    if($_FILES["fileimg"]["error"] == 4){
+        echo '<script> swal("Lỗi tải lên ảnh!"); </script>';
+    }
+    else{
+        $filemp3_name = $_FILES["filemp3"]["name"];
+        $musicExtension = explode('.', $filemp3_name);
+        $musicExtension = strtolower(end($musicExtension));
+
+        $newMusicName = uniqid();
+        $newMusicName .= '.' . $musicExtension;
+
+
+
+        $fileimg_name = $_FILES["fileimg"]["name"];
+        $imageExtension = explode('.', $fileimg_name);
+        $imageExtension = strtolower(end($imageExtension));
+
+        $newImageName = uniqid();
+        $newImageName .= '.' . $imageExtension;
+  
+        move_uploaded_file($_FILES["filemp3"]["tmp_name"], 'src/sound/' . $newMusicName);
+        move_uploaded_file($_FILES["fileimg"]["tmp_name"], 'src/image/' . $newImageName);
+        $query = "INSERT INTO `songs`(`name`, `singer`, `music`, `cover`, `lyrics`) VALUES ('$filename','$fileown','$newMusicName','$newImageName','$filelyrics')";
+        mysqli_query($conn, $query);
+        $query = "";
+        echo
+        '
+        <script>
+          alert("Tải nhạc lên thành công");
+          document.location.href = "admin.php";
+        </script>
+        ';
+    }
+}
 ?>
 
 <!doctype html>
@@ -24,6 +66,7 @@ if(!isset($_SESSION['adname'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Music</title>
 </head>
 
@@ -31,7 +74,7 @@ if(!isset($_SESSION['adname'])){
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fddddd;">
             <div class="container-fluid">
-                <img src="./src/logo.png" alt="logo" style="width: 25px">
+                <img src="./img/logo.png" alt="logo" style="width: 25px">
                 <a href="./" class="navbar-brand">NCM</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -55,6 +98,8 @@ if(!isset($_SESSION['adname'])){
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
+                            <li><a class="dropdown-item" href="./play.php">Chơi nhạc</a></li>
+                            <li><a class="dropdown-item" href="./add.php">Thêm quản trị viên</a></li>
                             <li><a class="dropdown-item" href="./logout.php">Đăng xuất</a></li>
                         </ul>
                         <script>
@@ -74,38 +119,64 @@ if(!isset($_SESSION['adname'])){
     <content class="row w-100">
         <div class="edit-area col-12 col-lg-7">
             <div class="container">
-                <form action="" style="width: 100%;">
+                <form action="" style="width: 100%;" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div class="row mb-3 mt-4">
                         <label for="filemp3" class="col-12 col-sm-3 col-form-label">Tải bài hát</label>
                         <div class="col-12 col-sm-9">
-                            <input class="form-control" type="file" id="filemp3" accept=".mp3" multiple required>
+                            <input class="form-control" type="file" id="filemp3" name="filemp3" accept=".mp3" multiple required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 mt-4">
+                        <label for="fileimg" class="col-12 col-sm-3 col-form-label">Tải ảnh mô tả</label>
+                        <div class="col-12 col-sm-9">
+                            <input class="form-control" type="file" id="fileimg" name="fileimg" accept=".png" multiple required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="filename" class="col-12 col-sm-3 col-form-label">Tên bài hát</label>
                         <div class="col-12 col-sm-9">
-                            <input class="form-control" type="text" id="filename" required>
+                            <input class="form-control" type="text" id="filename" name="filename" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="fileown" class="col-12 col-sm-3 col-form-label">Ca sĩ</label>
                         <div class="col-12 col-sm-9">
-                            <input class="form-control" type="text" id="fileown" required>
+                            <input class="form-control" type="text" id="fileown" name="fileown" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="filelyrics" class="col-12 col-sm-3 col-form-label">Lời bài hát</label>
                         <div class="col-12 col-sm-9">
-                            <textarea class="form-control" type="text" id="filelyrics" rows="4"></textarea>
+                            <textarea class="form-control" type="text" id="filelyrics" name="filelyrics" rows="4"></textarea>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-around">
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-submit" type="submit">Cập nhật</button>
-                        <button class="btn btn-primary btn-block fa-lg mb-3 btn-submit btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#confirm" confirm="Xác nhận xoá vv" style="color: #fff;">Xóa</button>
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-submit" name="submit" type="submit">Cập nhật</button>
+                        <button class="btn btn-primary btn-block fa-lg mb-3 btn-submit btn-outline-danger" type="button" onclick="alert()" style="color: #fff;">Xóa</button>
+                        <script>
+                            function alert() {
+                                swal({
+                                    title: "Xác nhận xoá?",
+                                    text: "Sau khi xoá, dữ liệu mất vĩnh viễn. Không thể truy cập được nữa",
+                                    icon: "warning",
+                                    buttons: true,
+                                    dangerMode: true,
+                                })
+                                .then((willDelete) => {
+                                    if (willDelete) {
+                                        swal("Oops, Đã xoá thành công!", {
+                                        icon: "success",
+                                        });
+                                    }
+                                }); 
+                            }
+                        </script>
+                        <!-- <button class="btn btn-primary btn-block fa-lg mb-3 btn-submit btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#confirm" style="color: #fff;">Xóa</button> -->
                         <!-- The Modal -->
                         <div class="modal" id="confirm">
                             <div class="modal-dialog">
@@ -154,6 +225,7 @@ if(!isset($_SESSION['adname'])){
 
         <div class="sub-play col-12 col-lg-5">
             <div class="container vertical-scrollable">
+                <!-- Codeherenek -->
                 <div class="row text-right">
                     <li class="item">
                         <p><b>Tên bài hát</b></p>

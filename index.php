@@ -1,3 +1,19 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if(isset($_SESSION['adname'])){
+   header('location:admin.php');
+}
+
+if(isset($_SESSION['name'])){
+  header('location:home.php');
+}
+
+?>
+
 <!doctype html>
 <html lang="vi">
 
@@ -17,7 +33,7 @@
   <div class="header">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fddddd;">
       <div class="container-fluid">
-        <img src="./src/logo.png" alt="logo" style="width: 25px">
+        <img src="./img/logo.png" alt="logo" style="width: 25px">
         <a href="./" class="navbar-brand">NCM</a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
