@@ -8,6 +8,10 @@ if(!isset($_SESSION['name'])){
    header('location:signin.php');
 }
 
+if(isset($_POST['search'])){
+    header('location:play.php');
+}
+
 ?>
 
 <!doctype html>
@@ -16,7 +20,7 @@ if(!isset($_SESSION['name'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel='stylesheet' href='styles/style.css'>
@@ -36,14 +40,14 @@ if(!isset($_SESSION['name'])){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm bài hát">
+                        <form class="input-group" method="POST" onsubmit="return ajsearch();">
+                            <input type="text" id="search" class="form-control" placeholder="Tìm kiếm bài hát">
                             <div class="input-group-append">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" name="search" type="submit">
                                     <i class="bi bi-search"></i>
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="btn-group navbar-nav ms-auto">
                         <a class="nav-item nav-link item-none" id="welcome">Chào buổi sáng!</a>
@@ -107,241 +111,85 @@ if(!isset($_SESSION['name'])){
 
     <content class="row w-100">
         <div class="main-content col-12 col-lg-9">
-            <h2>Nhạc gợi ý cho bạn</h2>
+            <h2>Nhạc ngẫu hứng</h2>
 
             <div class="suggest">
+                <?php 
+                    $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY RAND() LIMIT 10");
+                ?>
+                <?php foreach ($rows as $row) : ?>
+                    <div class="item">
+                        <img src="<?php echo './src/image/'.$row["cover"]; ?>" alt="">
+                        <p><?php echo $row["name"]; ?></p>
+                        <p><?php echo $row["singer"]; ?></p>
+                    </div>
+                <?php endforeach; ?>
+                <script src="./js/home.js"></script>
+                <!-- 
+
                 <li class="item">
                     <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
                     <p>Bai hat 1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</p>
                     <p>Ca si 1</p>
-                </li>
+                </li> 
+            
+                -->
 
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 3</p>
-                    <p>Ca si 3</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 1</p>
-                    <p>Ca si 1</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 3</p>
-                    <p>Ca si 3</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 1</p>
-                    <p>Ca si 1</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 3</p>
-                    <p>Ca si 3</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 1</p>
-                    <p>Ca si 1</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
+                
             </div>
 
             <h2>Nhạc mới tải lên</h2>
             <div class="new">
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 1</p>
-                    <p>Ca si 1</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 3</p>
-                    <p>Ca si 3</p>
-                </div>
+                <?php 
+                    $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC LIMIT 10");
+                ?>
+                <?php foreach ($rows as $row) : ?>
+                    <div class="item">
+                        <img src="<?php echo './src/image/'.$row["cover"]; ?>" alt="">
+                        <p><?php echo $row["name"]; ?></p>
+                        <p><?php echo $row["singer"]; ?></p>
+                    </div>
+                <?php endforeach; ?>
+                <!-- 
 
                 <div class="item">
                     <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
                     <p>Bai hat 1</p>
                     <p>Ca si 1</p>
-                </div>
+                </div> 
+            
+                -->
 
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 3</p>
-                    <p>Ca si 3</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 1</p>
-                    <p>Ca si 1</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 3</p>
-                    <p>Ca si 3</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 1</p>
-                    <p>Ca si 1</p>
-                </div>
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 2</p>
-                    <p>Ca si 2</p>
-                </div>
             </div>
         </div>
 
         <div class="sub-content col-0 col-lg-3">
             <h2>BXH Bài hát</h2>
             <div class="BXH">
+                <?php 
+                    $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY view DESC LIMIT 10");
+                    $i = 1;
+                ?>
+                <?php foreach ($rows as $row) : ?>
+                    <li class="songItem">
+                        <span><?php echo $i++; ?></span>
+                        <h5><?php echo $row["name"]; ?><br>
+                            <div class="subtitle"><?php echo $row["singer"]; ?></div>
+                        </h5>
+                        <i class="bi bi-play-fill playListPlay" id="1"></i>
+                    </li>
+                <?php endforeach; ?>
+                <!-- 
+                    
                 <li class="songItem">
                     <span>01</span>
                     <h5> On My Way <br>
                         <div class="subtitle">Alan Walker</div>
                     </h5>
                     <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
-
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li>
+                </li> 
+            
+                -->
             </div>
         </div>
     </content>

@@ -5,11 +5,9 @@
 session_start();
 
 if(!isset($_SESSION['name'])){
-    if(!isset($_SESSION['adname'])){
-        header('location:signin.php');
+    if(isset($_SESSION['adname'])){
+        $_SESSION['name'] = $_SESSION['adname'];
     }
-
-    $_SESSION['name'] = $_SESSION['adname'];
 }
 
 ?>
@@ -40,14 +38,14 @@ if(!isset($_SESSION['name'])){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm bài hát">
+                        <form class="input-group" method="POST" onsubmit="return ajsearch();">
+                            <input type="text" id="search" class="form-control" placeholder="Tìm kiếm bài hát">
                             <div class="input-group-append">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-secondary" name="search" type="submit">
                                     <i class="bi bi-search"></i>
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="btn-group navbar-nav ms-auto">
                         <a class="nav-item nav-link item-none" id="welcome">Chào buổi sáng!</a>
@@ -62,7 +60,7 @@ if(!isset($_SESSION['name'])){
                                     echo '<li><a class="dropdown-item" href="./admin.php">Quản trị bài hát</a></li>';
                                 }
                             ?>
-                            <li><a class="dropdown-item" href="./logout.php">Đăng xuất</a></li>
+                            <li><a class="dropdown-item" href="./logout.php"><?php if(isset($_SESSION['name']) or isset($_SESSION['adname'])) echo "Đăng xuất"; else echo "Trang chủ";?></a></li>
                         </ul>
                         <script>
                             if (new Date().getHours() >= 12) {
@@ -195,100 +193,57 @@ if(!isset($_SESSION['name'])){
         </div>
 
         <div class="sub-play col-12 col-lg-5">
-            <div class="container vertical-scrollable">
-                <div class="row text-right">
+            <div class="container vertical-scrollable" >
+                <?php 
+                    $results = mysqli_query($conn, "SELECT * FROM songs ORDER BY id ASC");
+                ?>
+                <div class="row text-right" id="wrapper">
+                <?php foreach ($results as $row) : ?>
+                    <li class="item" value="<?php echo $row["id"]; ?>">
+                        <p><b><?php echo $row["name"]; ?></b></p>
+                        <p><?php echo $row["singer"]; ?></p>
+                        <i class="bi bi-play-fill"></i>
+                    </li>
+                <?php endforeach; ?>
+                    <!-- Structure 
+
                     <li class="item">
                         <p><b>Tên bài hát</b></p>
                         <p>Tên tác giả</p>
                         <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li>
+                    </li> 
+                
+                    -->
                 </div>
+                <script src="./js/play.js"></script>
             </div>
+            <script>
+                function ajsearch () {
+                    // Nhận yêu cầu tìm kiếm
+                    var data = new FormData();
+                    data.append("search", document.getElementById("search").value);
+                    data.append("ajax", 1);
+
+                    // Ajax yêu cầu tìm kiếm
+                    fetch("search.php", { method:"POST", body:data })
+                    .then(res => res.json()).then((results) => {
+                        var wrapper = document.getElementById("wrapper");
+                        if (results.length > 0) {
+                        wrapper.innerHTML = "";
+                        for (let res of results) {
+                            let line = document.createElement("li");
+                            line.classList.add('item');
+                            line.innerHTML = `
+                                <p><b>  ${res["name"]}</b></p>
+                                <p>${res["singer"]}</p>
+                            `;
+                            wrapper.appendChild(line);  
+                        }
+                        } else { wrapper.innerHTML = "No results found"; }
+                });
+                return false;
+                }
+            </script>
         </div>
     </content>
 </body>

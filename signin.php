@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
 
         
     }else{
-        $error[] = 'incorrect email or password!';
+        $error[] = 'Tài khoản hoặc mật khẩu không hợp lệ!';
     }
 
 };

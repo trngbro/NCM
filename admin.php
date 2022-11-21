@@ -12,6 +12,7 @@ if(isset($_POST["submit"])){
     $filename = mysqli_real_escape_string($conn, $_POST['filename']);
     $fileown  = mysqli_real_escape_string($conn, $_POST['fileown']);
     $filelyrics = mysqli_real_escape_string($conn, $_POST['filelyrics']);
+    $filetag = mysqli_real_escape_string($conn, $_POST['tag']);
 
     if($_FILES["filemp3"]["error"] == 4){
         echo '<script> swal("Lỗi tải lên nhạc!"); </script>';
@@ -38,7 +39,7 @@ if(isset($_POST["submit"])){
   
         move_uploaded_file($_FILES["filemp3"]["tmp_name"], 'src/sound/' . $newMusicName);
         move_uploaded_file($_FILES["fileimg"]["tmp_name"], 'src/image/' . $newImageName);
-        $query = "INSERT INTO `songs`(`name`, `singer`, `music`, `cover`, `lyrics`) VALUES ('$filename','$fileown','$newMusicName','$newImageName','$filelyrics')";
+        $query = "INSERT INTO `songs`(`name`, `singer`, `music`, `cover`, `lyrics`, `tag`) VALUES ('$filename','$fileown','$newMusicName','$newImageName','$filelyrics', '$filetag')";
         mysqli_query($conn, $query);
         $query = "";
         echo
@@ -130,7 +131,7 @@ if(isset($_POST["submit"])){
                     <div class="row mb-3 mt-4">
                         <label for="fileimg" class="col-12 col-sm-3 col-form-label">Tải ảnh mô tả</label>
                         <div class="col-12 col-sm-9">
-                            <input class="form-control" type="file" id="fileimg" name="fileimg" accept=".png" multiple required>
+                            <input class="form-control" type="file" id="fileimg" name="fileimg" accept="image/*" multiple required>
                         </div>
                     </div>
 
@@ -145,6 +146,13 @@ if(isset($_POST["submit"])){
                         <label for="fileown" class="col-12 col-sm-3 col-form-label">Ca sĩ</label>
                         <div class="col-12 col-sm-9">
                             <input class="form-control" type="text" id="fileown" name="fileown" required>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="fileown" class="col-12 col-sm-3 col-form-label">Mô tả</label>
+                        <div class="col-12 col-sm-9">
+                            <input class="form-control" type="text" id="tag" name="tag">
                         </div>
                     </div>
 
@@ -226,97 +234,27 @@ if(isset($_POST["submit"])){
         <div class="sub-play col-12 col-lg-5">
             <div class="container vertical-scrollable">
                 <!-- Codeherenek -->
+                <?php 
+                $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC")
+                ?>
+
                 <div class="row text-right">
+                <?php foreach ($rows as $row) : ?>
+                    <li class="item" value="<?php echo $row["id"]; ?>">
+                        <p><b><?php echo $row["name"]; ?></b></p>
+                        <p><?php echo $row["singer"]; ?></p>
+                        <i class="bi bi-pencil-fill"></i>
+                    </li>
+                <?php endforeach; ?>
+                    <!-- Structure
+
                     <li class="item">
                         <p><b>Tên bài hát</b></p>
                         <p>Tên tác giả</p>
                         <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li>
+                    </li> 
+                
+                    -->
                 </div>
             </div>
         </div>

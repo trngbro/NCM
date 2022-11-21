@@ -1,0 +1,3 @@
+-- Lấy danh sách top 10 bài hát được ưa thích nhấT
+select * from songs ORDER BY likes LIMIT 10
+
