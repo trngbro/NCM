@@ -36,7 +36,7 @@ h2 {
     height: 40vh;
 }
 
-.headr nav .container-fluid {
+.header nav .container-fluid {
     width: 100%;
 }
 
@@ -183,6 +183,10 @@ button {
     line-height: 40px;
 }
 
+
+content > .item {
+    cursor: pointer;
+} 
 
 /* Suggestion */
 
@@ -361,6 +365,10 @@ content .main-play .control {
 
 content .main-play .control i {
     font-size: 40px;
+}
+
+content .main-play .control .random-color {
+    color: #eee;
 }
 
 content .main-play .control .bi-play-circle-fill {

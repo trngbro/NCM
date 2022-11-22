@@ -20,12 +20,12 @@ if(isset($_POST['search'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel='stylesheet' href='styles/style.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel='stylesheet' href='styles/theme.css'>
+    <link rel='stylesheet' href='styles/style.css'>
     <title>Music</title>
 </head>
 
@@ -51,7 +51,7 @@ if(isset($_POST['search'])){
                     </div>
                     <div class="btn-group navbar-nav ms-auto">
                         <a class="nav-item nav-link item-none" id="welcome">Chào buổi sáng!</a>
-                        <button type="button" class="btn dropdown-toggle users-log" data-bs-toggle="dropdown"></button>
+                        <button type="button" class="btn dropdown-toggle users-log" style="margin-right: 0px" data-bs-toggle="dropdown"></button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#"> <span><?php echo $_SESSION['name'] ?></span></a></li>
                             <li>
@@ -68,29 +68,37 @@ if(isset($_POST['search'])){
                             }
                         </script>
                     </div>
+                    <div >
+                        <input type="checkbox" class="checkbox" id="chk" />
+                        <label class="label" for="chk">
+                            <i class="bi bi-moon-fill"></i>
+                            <i class="bi bi-sun-fill"></i>
+                            <div class="ball"></div>
+                        </label>
+                    </div>
                 </div>
             </div>
         </nav>
     </div>
-    <div class="silder" style="background-color: #eee;">
+    <div id="slider" class="silder" style="background-color: #eee;">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="10000" style="background-color: #fddddd;" e>
-                    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="d-block w-100" alt="...">
+                    <img src="https://dummyimage.com/1000x300/000/fff" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>First slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
-                    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="d-block w-100" alt="...">
+                    <img src="https://dummyimage.com/1000x300/000/fff" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Second slide label</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="d-block w-100" alt="...">
+                    <img src="https://dummyimage.com/1000x300/000/fff" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Third slide label</h5>
                         <p>Some representative placeholder content for the third slide.</p>
@@ -109,7 +117,7 @@ if(isset($_POST['search'])){
         </div>
     </div>
 
-    <content class="row w-100">
+    <content id="content-music" class="row w-100" style="margin:0;">
         <div class="main-content col-12 col-lg-9">
             <h2>Nhạc ngẫu hứng</h2>
 
@@ -193,6 +201,14 @@ if(isset($_POST['search'])){
             </div>
         </div>
     </content>
-</body>
+<script>
+    const chk = document.getElementById('chk');
 
+    chk.addEventListener('change', () => {
+        document.getElementById("content-music").classList.toggle('dark');
+        document.getElementById("carouselExampleDark").classList.toggle('dark');
+        document.getElementById("slider").classList.toggle('dark');
+    });
+</script>
+</body>
 </html>

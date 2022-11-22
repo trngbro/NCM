@@ -26,6 +26,7 @@ if (isset($_POST['search'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <link rel='stylesheet' href='styles/style.css'>
+  <link rel='stylesheet' href='styles/theme.css'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <title>Music</title>
@@ -55,32 +56,37 @@ if (isset($_POST['search'])) {
             <a href="./signup.php" class="nav-item nav-link item-none">Đăng ký</a>
             <a href="./signin.php" class="nav-item nav-link item-colo">Đăng nhập</a>
           </div>
+          <div >
+            <input type="checkbox" class="checkbox" id="chk" />
+            <label class="label" for="chk">
+                <i class="bi bi-moon-fill"></i>
+                <i class="bi bi-sun-fill"></i>
+                <div class="ball"></div>
+            </label>
+          </div>
         </div>
       </div>
     </nav>
   </div>
-  <div class="silder" style="background-color: #eee;">
+  <div id="slider" class="silder" style="background-color: #eee;">
     <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="10000" style="background-color: #fddddd;" e>
-          <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="d-block w-100" alt="...">
+          <img src="img/indie.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+            <h5>Nhạc Indie</h5>
           </div>
         </div>
         <div class="carousel-item" data-bs-interval="2000">
-          <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="d-block w-100" alt="...">
+          <img src="img/old.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
+            <h5>Nhạc cổ</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="d-block w-100" alt="...">
+          <img src="img/gold.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+            <h5>Nhạc vàng</h5>
           </div>
         </div>
       </div>
@@ -96,7 +102,7 @@ if (isset($_POST['search'])) {
     </div>
   </div>
 
-  <content class="row w-100">
+  <content id="content-music" class="row w-100">
     <div class="main-content col-12 col-lg-9">
       <h2>Nhạc ngẫu hứng</h2>
 
@@ -180,5 +186,13 @@ if (isset($_POST['search'])) {
     </div>
   </content>
 </body>
+<script>
+    const chk = document.getElementById('chk');
 
+    chk.addEventListener('change', () => {
+        document.getElementById("content-music").classList.toggle('dark');
+        document.getElementById("carouselExampleDark").classList.toggle('dark');
+        document.getElementById("slider").classList.toggle('dark');
+    });
+</script>
 </html>

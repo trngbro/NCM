@@ -4,8 +4,15 @@
 
 session_start();
 
+
+
 if(!isset($_SESSION['adname'])){
-   header('location:signin.php');
+    header('location:signin.php');
+}
+
+if(isset($_SESSION['name'])){
+   header('location:home.php');
+   echo "E";
 }
 
 if(isset($_POST["submit"])){
