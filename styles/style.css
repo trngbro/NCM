@@ -390,7 +390,6 @@ content .sub-play .container {
     background-color: #eee;
     border-radius: 10px;
     padding-left: 40px;
-    display: flex;
     overflow: auto;
     scroll-behavior: smooth;
 }
@@ -401,7 +400,6 @@ content .main-play .container {
     background-color: #eee;
     border-radius: 10px;
     padding-left: 40px;
-    display: flex;
     overflow: auto;
     scroll-behavior: smooth;
 }
@@ -512,7 +510,6 @@ content .edit-area .container {
     background-color: #eee;
     border-radius: 10px;
     padding-left: 40px;
-    display: flex;
     overflow: auto;
     scroll-behavior: smooth;
 }

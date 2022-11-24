@@ -94,118 +94,155 @@ if(!isset($_SESSION['name'])){
 
     <content id="content-music" class="row w-100" style="margin:0">
         <div id="right-content" class="main-play col-12 col-lg-7">
-            <div class="container vertical-scrollable">
-                <div class="row text-right">
-                    <li id="top-left" class="item"></li>
-                    <li class="item">
+            <div class="container">
+                <a id="top-left" class="item"></a>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
                         <p><b>Tên bài hát</b></p>
                         <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
                     </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
                 </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <div class="row text-right" style="width:100%; height:100px">
+                    <li class="item col-10" >
+                        <p><b>Tên bài hát</b></p>
+                        <p>Tên tác giả</p>
+                    </li>
+                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
+                </div>
+                <span id="details"></span>
             </div>
+            
 
             <div class="control" onclick="location.href='#top-left'">
                 <i class="bi bi-file-arrow-down-fill icon-color random-color"></i>
                 <i class="bi bi-play-circle-fill icon-color random-color"></i>
                 <i class="bi bi-caret-right-fill icon-color random-color"></i>
                 <i class="bi bi-heart-fill icon-color"></i>
+                <script>
+                    var icon = document.getElementsByClassName('random-color');
+                    for (var i = 0; i < icon.length; i++) {
+                        icon[i].onmouseover = function(e) {
+                            this.style['color'] = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                        }
+                        icon[i].onmouseout = function(e) {
+                            this.style['color'] = '#eee';
+                        }
+                    }
+                </script>
             </div>
+            
             <script>
-                var icon = document.getElementsByClassName('random-color');
-                for (var i = 0; i < icon.length; i++) {
-                    icon[i].onmouseover = function(e) {
-                        this.style['color'] = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                $(document).ready(function(){
+                    load_data();
+
+                    function load_data()
+                    {
+                        $.ajax({
+                            url:"get_playlist.php",
+                            method:"POST",
+                            dataType:"json",
+                            success:function(data)
+                            {
+                                $('#details').html(data.details);
+                            }
+                        });
                     }
-                    icon[i].onmouseout = function(e) {
-                        this.style['color'] = '#eee';
-                    }
-                }
+
+                    
+
+                    $(document).on('click', '.delete', function(){
+                        var id = $(this).attr("id");
+                        var action = 'remove';
+                        if(confirm("Bạn có chắc không nghe bài hát này nữa?"))
+                        {
+                            $.ajax({
+                                url:"main.php",
+                                method:"POST",
+                                data:{id:id, action:action},
+                                success:function()
+                                {
+                                    load_data();
+                                    alert("Bài hát đã được xoá khỏi danh sách");
+                                }
+                            })
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    });
+
+                    $(document).on('click', '#clear_playlist', function(){
+                        var action = 'empty';
+                        $.ajax({
+                            url:"main.php",
+                            method:"POST",
+                            data:{action:action},
+                            success:function()
+                            {
+                                load_cart_data();
+                                alert("Danh sách phát đã trống");
+                            }
+                        });
+                    });
+                });
             </script>
         </div>
 
@@ -219,20 +256,17 @@ if(!isset($_SESSION['name'])){
                 <ul style="width:100%">
                 
                 <?php foreach ($results as $row) : ?>
-                    <li class="item" value="<?php echo $row["id"]; ?>">
-                        <p><b><?php echo $row["name"]; ?></b></p>
-                        <p><?php echo $row["singer"]; ?></p><br>
-                    </li>
+                    <div class="row">
+                        <li class="item col-10" value="<?php echo $row["id"]; ?>">
+                            <p><b><?php echo $row["name"]; ?></b></p>
+                            <p><?php echo $row["singer"]; ?></p><br>
+                            <input type="hidden" name="id" value="<?php echo $row["id"]; ?>" />
+                            <input type="hidden" name="name" value="<?php echo $row["name"]; ?>" />
+                            <input type="hidden" name="singer" value="<?php echo $row["singer"]; ?>" />
+                        </li>
+                        <input type="submit" name="add_to_play" style="height:20%; margin:auto; background-color:#fddddd" class="btn col-2" value="Play"/>
+                    </div>
                 <?php endforeach; ?>
-                    <!-- Structure 
-
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-play-fill"></i>
-                    </li> 
-                
-                    -->
                 </ul>
                 </div>
                 <script src="./js/play.js"></script>
@@ -249,26 +283,59 @@ if(!isset($_SESSION['name'])){
                     .then(res => res.json()).then((results) => {
                         var wrapper = document.getElementById("wrapper");
                         if (results.length > 0) {
-                            wrapper.innerHTML = "";
+                            wrapper.innerHTML = "<li id='top-right'></li>";
                             for (let res of results) {
-                                let line = document.createElement("li");
-                                line.classList.add('item');
+                                let line = document.createElement("div");
+                                line.classList.add('row');
                                 line.innerHTML = `
-                                    <p><b>  ${res["name"]}</b></p>
-                                    <p>${res["singer"]}</p><br>
+                                    <li class="item col-10" value="${res["id"]}">
+                                        <p><b>${res["name"]}</b></p>
+                                        <p>${res["singer"]}</p><br>
+                                        <input type="hidden" name="id" value="${res["id"]}" />
+                                        <input type="hidden" name="name" value="${res["name"]}" />
+                                        <input type="hidden" name="singer" value="${res["singer"]}" />
+                                    </li>
+                                    <input type="submit" name="add_to_play" style="height:30%; margin:auto; background-color:#fddddd" class="btn col-2" value="Play"/>
                                 `;
                                 wrapper.appendChild(line);  
                             }
                         } else { wrapper.innerHTML = "<li class='item empty-result'>Không có kết quả!</li>"; }
-                });
-                return false;
+                    });
+                    return false;
                 }
+
+                $(document).ready(function(){
+                    $(document).on('click', '.add_to_play', function(){
+                        var id = $(this).attr("id");
+                        var name = $('#name'+id+'').val();
+                        var singer = $('#singer'+id+'').val();
+                        var action = "add";
+                        if(true)
+                        {
+                            $.ajax({
+                                url:"main.php",
+                                method:"POST",
+                                data:{id:id, name:name, singer:singer, action:action},
+                                success:function(data)
+                                {
+                                    load_data();
+                                    alert("Added music to play");
+                                }
+                            });
+                        }
+                        else
+                        {
+                            alert("This song was in playlist");
+                        }
+                    });
+                });
             </script>
         </div>
     </content>
     <div id="popup-widget" style="position: fixed; bottom: 20px; right: 60px; font-size: 40px; color: #fff">
         <i class="bi bi-arrow-up-circle-fill" onclick="location.href='#top-right'"></i>
     </div>
+    
 </body>
 <script>
     const chk = document.getElementById('chk');
