@@ -14,8 +14,8 @@ if(!empty($_SESSION["list_play"]))
 		$output .= '
         <div class="row text-right" style="width:100%; height:100px">
 			<li class="item col-10" >
-				<p><b>'.$values["filename"].'</b></p>
-				<p>'.$values["filesinger"].'</p>
+				<p><b>'.$values["name"].'</b></p>
+				<p>'.$values["singer"].'</p>
 			</li>
 			<button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto; background-color:#" id="'. $values["id"].'">Xoá</button>
 		</div>
@@ -25,12 +25,13 @@ if(!empty($_SESSION["list_play"]))
 }
 else
 {
-	$output .= '
+	$output .= ' 	
 	<div class="row text-right" style="width:100%; height:100px">
 		<p>Không có bài hát nào để chơi</p>	
 	</div>
 	';
 }
+
 $data = array(
 	'details'	=>	$output,
 	'total'		=>	$total

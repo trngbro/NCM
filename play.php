@@ -9,7 +9,6 @@ if(!isset($_SESSION['name'])){
         $_SESSION['name'] = $_SESSION['adname'];
     }
 }
-
 ?>
 
 <!doctype html>
@@ -19,12 +18,13 @@ if(!isset($_SESSION['name'])){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"  rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link rel='stylesheet' href='styles/style.css'>
     <link rel='stylesheet' href='styles/theme.css'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Music</title>
 </head>
 
@@ -96,76 +96,6 @@ if(!isset($_SESSION['name'])){
         <div id="right-content" class="main-play col-12 col-lg-7">
             <div class="container">
                 <a id="top-left" class="item"></a>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
-                <div class="row text-right" style="width:100%; height:100px">
-                    <li class="item col-10" >
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                    </li>
-                    <button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="1">Xoá</button>
-                </div>
                 <span id="details"></span>
             </div>
             
@@ -203,45 +133,7 @@ if(!isset($_SESSION['name'])){
                                 $('#details').html(data.details);
                             }
                         });
-                    }
-
-                    
-
-                    $(document).on('click', '.delete', function(){
-                        var id = $(this).attr("id");
-                        var action = 'remove';
-                        if(confirm("Bạn có chắc không nghe bài hát này nữa?"))
-                        {
-                            $.ajax({
-                                url:"main.php",
-                                method:"POST",
-                                data:{id:id, action:action},
-                                success:function()
-                                {
-                                    load_data();
-                                    alert("Bài hát đã được xoá khỏi danh sách");
-                                }
-                            })
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    });
-
-                    $(document).on('click', '#clear_playlist', function(){
-                        var action = 'empty';
-                        $.ajax({
-                            url:"main.php",
-                            method:"POST",
-                            data:{action:action},
-                            success:function()
-                            {
-                                load_cart_data();
-                                alert("Danh sách phát đã trống");
-                            }
-                        });
-                    });
+                    }                    
                 });
             </script>
         </div>
@@ -260,16 +152,15 @@ if(!isset($_SESSION['name'])){
                         <li class="item col-10" value="<?php echo $row["id"]; ?>">
                             <p><b><?php echo $row["name"]; ?></b></p>
                             <p><?php echo $row["singer"]; ?></p><br>
-                            <input type="hidden" name="id" value="<?php echo $row["id"]; ?>" />
-                            <input type="hidden" name="name" value="<?php echo $row["name"]; ?>" />
-                            <input type="hidden" name="singer" value="<?php echo $row["singer"]; ?>" />
+                            <input type="hidden" id="id<?php echo $row["id"]; ?>" value="<?php echo $row["id"]; ?>" />
+                            <input type="hidden" id="name<?php echo $row["id"]; ?>" value="<?php echo $row["name"]; ?>" />
+                            <input type="hidden" id="singer<?php echo $row["id"]; ?>" value="<?php echo $row["singer"]; ?>" />
                         </li>
-                        <input type="submit" name="add_to_play" style="height:20%; margin:auto; background-color:#fddddd" class="btn col-2" value="Play"/>
+                        <input type="button" name="add_to_play" id="<?php echo $row["id"]; ?>" style="height:20%; margin:auto; background-color:#fddddd" class="btn col-2 add_to_play" value="Phát"/>
                     </div>
                 <?php endforeach; ?>
                 </ul>
                 </div>
-                <script src="./js/play.js"></script>
             </div>
             <script>
                 function ajsearch () {
@@ -291,11 +182,11 @@ if(!isset($_SESSION['name'])){
                                     <li class="item col-10" value="${res["id"]}">
                                         <p><b>${res["name"]}</b></p>
                                         <p>${res["singer"]}</p><br>
-                                        <input type="hidden" name="id" value="${res["id"]}" />
-                                        <input type="hidden" name="name" value="${res["name"]}" />
-                                        <input type="hidden" name="singer" value="${res["singer"]}" />
+                                        <input type="hidden" id="id${res["id"]}" value="${res["id"]}" />
+                                        <input type="hidden" id="name${res["id"]}" value="${res["name"]}" />
+                                        <input type="hidden" id="singer${res["id"]}" value="${res["singer"]}" />
                                     </li>
-                                    <input type="submit" name="add_to_play" style="height:30%; margin:auto; background-color:#fddddd" class="btn col-2" value="Play"/>
+                                    <input type="submit" name="add_to_play" id="${res["id"]}" style="height:30%; margin:auto; background-color:#fddddd" class="btn col-2 add_to_play" value="Phát"/>
                                 `;
                                 wrapper.appendChild(line);  
                             }
@@ -309,16 +200,25 @@ if(!isset($_SESSION['name'])){
                         var id = $(this).attr("id");
                         var name = $('#name'+id+'').val();
                         var singer = $('#singer'+id+'').val();
-                        var action = "add";
+                        var action = "add_to_play"; 
                         if(true)
                         {
                             $.ajax({
-                                url:"main.php",
+                                url:"action.php",
                                 method:"POST",
                                 data:{id:id, name:name, singer:singer, action:action},
                                 success:function(data)
                                 {
-                                    load_data();
+                                    $.ajax({
+                                        url:"get_playlist.php",
+                                        method:"POST",
+                                        dataType:"json",
+                                        success:function(data)
+                                        {
+                                            $('#details').html(data.details);
+                                        }
+                                    });
+
                                     alert("Added music to play");
                                 }
                             });
@@ -328,6 +228,52 @@ if(!isset($_SESSION['name'])){
                             alert("This song was in playlist");
                         }
                     });
+
+
+                    $(document).on('click', '.delete', function(){
+                        var id = $(this).attr("id");
+                        var action = 'remove';
+                        if(confirm("Bạn có chắc không nghe bài hát này nữa?"))
+                        {
+                            $.ajax({
+                                url:"aciton.php",
+                                method:"POST",
+                                data:{id:id, action:action},
+                                success:function()
+                                {
+                                    $.ajax({
+                                        url:"get_playlist.php",
+                                        method:"POST",
+                                        dataType:"json",
+                                        success:function(data)
+                                        {
+                                            $('#details').html(data.details);
+                                        }
+                                    });
+                                    
+                                    alert("Bài hát đã được xoá khỏi danh sách");
+                                }
+                            })
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    });
+
+                    $(document).on('click', '#clear_playlist', function(){
+                        var action = 'empty';
+                        $.ajax({
+                            url:"action.php",
+                            method:"POST",
+                            data:{action:action},
+                            success:function()
+                            {
+                                load_data();
+                                alert("Danh sách phát đã trống");
+                            }
+                        });
+                    });
                 });
             </script>
         </div>
@@ -335,7 +281,6 @@ if(!isset($_SESSION['name'])){
     <div id="popup-widget" style="position: fixed; bottom: 20px; right: 60px; font-size: 40px; color: #fff">
         <i class="bi bi-arrow-up-circle-fill" onclick="location.href='#top-right'"></i>
     </div>
-    
 </body>
 <script>
     const chk = document.getElementById('chk');
