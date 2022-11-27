@@ -190,25 +190,6 @@ if(isset($_POST["submit"])){
                                 }); 
                             }
                         </script>
-                        <!-- <button class="btn btn-primary btn-block fa-lg mb-3 btn-submit btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#confirm" style="color: #fff;">Xóa</button> -->
-                        <!-- The Modal -->
-                        <div class="modal" id="confirm">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Xác nhận xoá vĩnh viễn</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Không thể hoàn tác sau khi xác nhận, thận trọng nhé!
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <style>
                         .gradient-custom-2 {
@@ -239,7 +220,6 @@ if(isset($_POST["submit"])){
 
         <div class="sub-play col-12 col-lg-5">
             <div class="container vertical-scrollable">
-                <!-- Codeherenek -->
                 <?php 
                 $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC")
                 ?>
@@ -252,15 +232,6 @@ if(isset($_POST["submit"])){
                         <i class="bi bi-pencil-fill"></i>
                     </li>
                 <?php endforeach; ?>
-                    <!-- Structure
-
-                    <li class="item">
-                        <p><b>Tên bài hát</b></p>
-                        <p>Tên tác giả</p>
-                        <i class="bi bi-pencil-fill"></i>
-                    </li> 
-                
-                    -->
                 </div>
             </div>
         </div>

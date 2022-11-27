@@ -40,7 +40,7 @@ if(!isset($_SESSION['name'])){
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
                         <form class="input-group" method="POST" onsubmit="return ajsearch();">
-                            <input type="text" id="search" class="form-control" placeholder="Tìm kiếm bài hát">
+                            <input type="text" id="search" autocomplete="off" class="form-control" placeholder="Tìm kiếm bài hát">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" name="search" type="submit">
                                     <i class="bi bi-search"></i>
@@ -96,13 +96,16 @@ if(!isset($_SESSION['name'])){
         <div id="right-content" class="main-play col-12 col-lg-7">
             <div class="container">
                 <a id="top-left" class="item"></a>
-                <span id="details"></span>
+                <ul id="details" class="row"></ul>
             </div>
-            
+
+            <div class="duration">
+                <input type="range" min="0" max="100" value="0" class="slider" id="duration" style="width:90%">
+            </div>
 
             <div class="control" onclick="location.href='#top-left'">
                 <i class="bi bi-file-arrow-down-fill icon-color random-color"></i>
-                <i class="bi bi-play-circle-fill icon-color random-color"></i>
+                <i class="bi bi-play-circle-fill icon-color random-color" id="changeicon"></i>
                 <i class="bi bi-caret-right-fill icon-color random-color"></i>
                 <i class="bi bi-heart-fill icon-color"></i>
                 <script>
@@ -133,7 +136,22 @@ if(!isset($_SESSION['name'])){
                                 $('#details').html(data.details);
                             }
                         });
-                    }                    
+                    }    
+                    
+                    var changeicon = document.getElementById('changeicon');
+                    changeicon.onclick = function(){
+                        if(changeicon.classList.contains('bi-play-circle-fill')){
+                            changeicon.classList.remove('bi-play-circle-fill');
+                            changeicon.classList.add('bi-pause-circle-fill');
+                        }
+                        else{
+                            changeicon.classList.remove('bi-pause-circle-fill');
+                            changeicon.classList.add('bi-play-circle-fill');
+                        }
+                    };
+                    
+                    var listPlay = document.getElementsByClassName('musicin');
+                    $("ul li:eq(0)").css( "background-color", "yellow" );
                 });
             </script>
         </div>
@@ -155,6 +173,7 @@ if(!isset($_SESSION['name'])){
                             <input type="hidden" id="id<?php echo $row["id"]; ?>" value="<?php echo $row["id"]; ?>" />
                             <input type="hidden" id="name<?php echo $row["id"]; ?>" value="<?php echo $row["name"]; ?>" />
                             <input type="hidden" id="singer<?php echo $row["id"]; ?>" value="<?php echo $row["singer"]; ?>" />
+                            <input type="hidden" id="music<?php echo $row["id"]; ?>" value="<?php echo $row["music"]; ?>" />
                         </li>
                         <input type="button" name="add_to_play" id="<?php echo $row["id"]; ?>" style="height:20%; margin:auto; background-color:#fddddd" class="btn col-2 add_to_play" value="Phát"/>
                     </div>
@@ -185,6 +204,7 @@ if(!isset($_SESSION['name'])){
                                         <input type="hidden" id="id${res["id"]}" value="${res["id"]}" />
                                         <input type="hidden" id="name${res["id"]}" value="${res["name"]}" />
                                         <input type="hidden" id="singer${res["id"]}" value="${res["singer"]}" />
+                                        <input type="hidden" id="music${res["id"]}" value="${res["music"]}" />
                                     </li>
                                     <input type="submit" name="add_to_play" id="${res["id"]}" style="height:30%; margin:auto; background-color:#fddddd" class="btn col-2 add_to_play" value="Phát"/>
                                 `;
@@ -200,13 +220,15 @@ if(!isset($_SESSION['name'])){
                         var id = $(this).attr("id");
                         var name = $('#name'+id+'').val();
                         var singer = $('#singer'+id+'').val();
+                        var music = $('#music'+id+'').val();
+                        console.log(music);
                         var action = "add_to_play"; 
                         if(true)
                         {
                             $.ajax({
                                 url:"action.php",
                                 method:"POST",
-                                data:{id:id, name:name, singer:singer, action:action},
+                                data:{id:id, name:name, singer:singer, music:music, action:action},
                                 success:function(data)
                                 {
                                     $.ajax({
@@ -218,14 +240,8 @@ if(!isset($_SESSION['name'])){
                                             $('#details').html(data.details);
                                         }
                                     });
-
-                                    alert("Added music to play");
                                 }
                             });
-                        }
-                        else
-                        {
-                            alert("This song was in playlist");
                         }
                     });
 
@@ -233,10 +249,10 @@ if(!isset($_SESSION['name'])){
                     $(document).on('click', '.delete', function(){
                         var id = $(this).attr("id");
                         var action = 'remove';
-                        if(confirm("Bạn có chắc không nghe bài hát này nữa?"))
+                        if(true)
                         {
                             $.ajax({
-                                url:"aciton.php",
+                                url:"action.php",
                                 method:"POST",
                                 data:{id:id, action:action},
                                 success:function()
@@ -250,8 +266,6 @@ if(!isset($_SESSION['name'])){
                                             $('#details').html(data.details);
                                         }
                                     });
-                                    
-                                    alert("Bài hát đã được xoá khỏi danh sách");
                                 }
                             })
                         }

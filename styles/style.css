@@ -355,6 +355,52 @@ content .main-content .item p {
     }
 }
 
+/* Duration */
+
+content .main-play .duration {
+    width: 100%;
+    text-align: center;
+}
+
+content .main-play .duration input {
+    width: 90%;
+}
+
+content .main-play .duration input[type=range]::-ms-track {
+    width: 90%;
+    height: 5px;
+    
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+    
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+content .main-play .duration input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+content .main-play .duration input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+content .main-play .duration input[type=range]::-webkit-slider-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: goldenrod;
+}
+content .main-play .duration input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+content .main-play .duration content .main-play .duration input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
 
 /* Play PHP */
 
@@ -372,6 +418,10 @@ content .main-play .control .random-color {
 }
 
 content .main-play .control .bi-play-circle-fill {
+    margin: 0 10%;
+}
+
+content .main-play .control .bi-pause-circle-fill {
     margin: 0 10%;
 }
 
@@ -422,7 +472,7 @@ content .main-play .container::-webkit-scrollbar-thumb:hover {
     background: #fddddd;
 }
 
-content .main-play .container .row .item {
+content .main-play .container  ul {
     max-height: 100px;
     list-style-type: none;
     padding-right: 10px;
@@ -453,7 +503,7 @@ content .sub-play .container li {
     list-style-type: none;
 }
 
-content .main-play .container .row .item:first-child {
+content .main-play .container ul .li:first-child {
     margin-top: 20px;
 }
 
@@ -461,7 +511,7 @@ content .sub-play .container .row .item:first-child {
     margin-top: 20px;
 }
 
-content .main-play .container .row li:first-child p {
+content .main-play .container .ul li:first-child p {
     color: #8b6767;
 }
 
@@ -469,21 +519,29 @@ content .sub-play .container .row li:hover {
     color: #8b6767;
 }
 
-content .main-play .container .row li:hover {
+content .main-play .container ul li:first-child {
+    padding-top: 20px;
+}
+
+content .main-play .container ul li {
+    padding-bottom: 20px;
+}
+
+content .main-play .container .ul li:hover {
     color: #8b6767;
 }
 
-content .main-play .container .row li {
+content .main-play .container .ul li {
     position: relative;
 }
 
-content .main-play .container .row li i {
+content .main-play .container .ul li i {
     position: relative;
     left: 100%;
     bottom: 60%;
 }
 
-content .main-play .container .row li:active {
+content .main-play .container .ul li:active {
     color: white;
 }
 

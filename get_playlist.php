@@ -1,7 +1,5 @@
 <?php
 
-//fetch_cart.php
-
 session_start();
 
 $total = 0;
@@ -12,13 +10,12 @@ if(!empty($_SESSION["list_play"]))
 	foreach($_SESSION["list_play"] as $keys => $values)
 	{
 		$output .= '
-        <div class="row text-right" style="width:100%; height:100px">
-			<li class="item col-10" >
+			<li class="item col-10 musicin" >
 				<p><b>'.$values["name"].'</b></p>
 				<p>'.$values["singer"].'</p>
+				<input type="hidden" id="music'.$values["id"].'" value="'.$values["music"].'" />
 			</li>
-			<button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto; background-color:#" id="'. $values["id"].'">Xoá</button>
-		</div>
+			<button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="'. $values["id"].'">Xoá</button>
 		';
 		$total += 1;
 	}
@@ -26,9 +23,9 @@ if(!empty($_SESSION["list_play"]))
 else
 {
 	$output .= ' 	
-	<div class="row text-right" style="width:100%; height:100px">
-		<p>Không có bài hát nào để chơi</p>	
-	</div>
+	<li class="row norow" style="width:100%; height:100px; padding-top:20px">
+		<p>Không có bài hát nào để phát!</p>	
+	</li>
 	';
 }
 

@@ -4,11 +4,11 @@
 
 session_start();
 
-if(!isset($_SESSION['adname'])){
+if(!isset($_SESSION['adname'])) {
    header('location:signin.php');
 }
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit'])) {
 
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -19,21 +19,21 @@ if(isset($_POST['submit'])){
 
     $result = mysqli_query($conn, $select);
 
-    if(mysqli_num_rows($result) > 0){
+    if(mysqli_num_rows($result) > 0) {
 
         $error[] = 'Tài khoản đã tồn tại!';
 
     }else{
 
-        if($pass != $cpass){
+        if($pass != $cpass) {
             $error[] = 'Các mật khẩu không khớp!';
-        }else{
+        } 
+        else{
             $insert = "INSERT INTO accounts(name, email, password, user_type) VALUES('$name','$email','$pass','admin')";
             mysqli_query($conn, $insert);
             header('location:admin.php');
         }
     }
-
 };
 
 

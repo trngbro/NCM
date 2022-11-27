@@ -6,7 +6,9 @@ session_start();
 
 if (isset($_SESSION['adname'])) {
   header('location:admin.php');
-} elseif (isset($_SESSION['name'])) {
+} 
+
+if (isset($_SESSION['name'])) {
   header('location:home.php');
 }
 
@@ -118,17 +120,6 @@ if (isset($_POST['search'])) {
             <p><?php echo $row["singer"]; ?></p>
           </div>
         <?php endforeach; ?>
-        <!-- 
-
-                <li class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq</p>
-                    <p>Ca si 1</p>
-                </li> 
-            
-                -->
-
-
       </div>
 
       <h2>Nhạc mới tải lên</h2>
@@ -143,16 +134,6 @@ if (isset($_POST['search'])) {
             <p><?php echo $row["singer"]; ?></p>
           </div>
         <?php endforeach; ?>
-        <!-- 
-
-                <div class="item">
-                    <img src="https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/f/d/7/6fd7eb64ebf977377af4c3f5dc0f268d.jpg" alt="">
-                    <p>Bai hat 1</p>
-                    <p>Ca si 1</p>
-                </div> 
-            
-                -->
-
       </div>
     </div>
 
@@ -172,17 +153,6 @@ if (isset($_POST['search'])) {
             <i class="bi bi-play-fill playListPlay" id="1"></i>
           </li>
         <?php endforeach; ?>
-        <!-- 
-                    
-                <li class="songItem">
-                    <span>01</span>
-                    <h5> On My Way <br>
-                        <div class="subtitle">Alan Walker</div>
-                    </h5>
-                    <i class="bi bi-play-fill playListPlay" id="1"></i>
-                </li> 
-            
-                -->
       </div>
     </div>
   </content>
