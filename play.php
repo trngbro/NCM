@@ -22,9 +22,12 @@ if(!isset($_SESSION['name'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"  rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <link rel='stylesheet' href='styles/style.css'>
     <link rel='stylesheet' href='styles/theme.css'>
+    <script src="./js/play.js"></script>
     <title>Music</title>
 </head>
 
@@ -53,13 +56,12 @@ if(!isset($_SESSION['name'])){
                         <button type="button" class="btn dropdown-toggle users-log" data-bs-toggle="dropdown"></button>
                         <ul class="dropdown-menu">
                             <?php
-                                if(!isset($_SESSION['name'])){
+                                if(isset($_SESSION['name']) || isset($_SESSION['adname'])){
                                     echo '
                                     <li><a class="dropdown-item" href="#"><span><?php echo $_SESSION["name"] ?></span></a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <?php
                                     ';
                                 }
                             ?>
@@ -105,8 +107,9 @@ if(!isset($_SESSION['name'])){
 
             <div class="control" onclick="location.href='#top-left'">
                 <i class="bi bi-file-arrow-down-fill icon-color random-color"></i>
-                <i class="bi bi-play-circle-fill icon-color random-color" id="changeicon"></i>
-                <i class="bi bi-caret-right-fill icon-color random-color"></i>
+                <i class="bi bi-play-circle-fill icon-color random-color" id="changeicon" ></i>
+                <i class="bi bi-caret-right-fill icon-color random-color" onclick="nextSong()"></i>
+                <script src="./js/play.js"></script>
                 <i class="bi bi-heart-fill icon-color"></i>
                 <script>
                     var icon = document.getElementsByClassName('random-color');
@@ -137,21 +140,56 @@ if(!isset($_SESSION['name'])){
                             }
                         });
                     }    
+
                     
                     var changeicon = document.getElementById('changeicon');
                     changeicon.onclick = function(){
-                        if(changeicon.classList.contains('bi-play-circle-fill')){
+                        if(typeof(audio) == "undefined"){
+                            swal("Danh sách rỗng!", "Hãy thêm bài hát vào để phát nó!", "warning");
+                            console.log("Here");
+                            return
+                        }
+                        else if(changeicon.classList.contains('bi-play-circle-fill')){
                             changeicon.classList.remove('bi-play-circle-fill');
                             changeicon.classList.add('bi-pause-circle-fill');
+                            if(audio == undefined) audio.play();
                         }
-                        else{
+                        else if(changeicon.classList.contains('bi-pause-circle-fill')) {
                             changeicon.classList.remove('bi-pause-circle-fill');
                             changeicon.classList.add('bi-play-circle-fill');
+                            if(audio == undefined) audio.pause();
                         }
                     };
                     
-                    var listPlay = document.getElementsByClassName('musicin');
-                    $("ul li:eq(0)").css( "background-color", "yellow" );
+                    function nextSong(){
+                        var current = document.getElementById("details").childNodes[1].childNodes[7].value;
+
+                        if(true)
+                        {
+                            $.ajax({
+                                url:"action.php",
+                                method:"POST",
+                                data:{id:current, action:"remove"},
+                                success:function()
+                                {
+                                    $.ajax({
+                                        url:"get_playlist.php",
+                                        method:"POST",
+                                        dataType:"json",
+                                        success:function(data)
+                                        {
+                                            $('#details').html(data.details);
+                                        }
+                                    });
+                                }
+                            })
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    // $("#details li:eq(0)").css( "background-color", "yellow" );
                 });
             </script>
         </div>
@@ -221,7 +259,6 @@ if(!isset($_SESSION['name'])){
                         var name = $('#name'+id+'').val();
                         var singer = $('#singer'+id+'').val();
                         var music = $('#music'+id+'').val();
-                        console.log(music);
                         var action = "add_to_play"; 
                         if(true)
                         {

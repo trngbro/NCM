@@ -14,6 +14,7 @@ if(!empty($_SESSION["list_play"]))
 				<p><b>'.$values["name"].'</b></p>
 				<p>'.$values["singer"].'</p>
 				<input type="hidden" id="music'.$values["id"].'" value="'.$values["music"].'" />
+				<input type="hidden" id="id'.$values["id"].'" value="'.$values["id"].'" />
 			</li>
 			<button name="delete" class="btn btn-danger btn-xs col-2 delete" style="height:40%; margin:auto;" id="'. $values["id"].'">Xoá</button>
 		';
