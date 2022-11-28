@@ -24,7 +24,7 @@ if(!empty($_SESSION["list_play"]))
 else
 {
 	$output .= ' 	
-	<li class="row norow" style="width:100%; height:100px; padding-top:20px">
+	<li class="row norow" value="empty" style="width:100%; height:100px; padding-top:20px">
 		<p>Không có bài hát nào để phát!</p>	
 	</li>
 	';

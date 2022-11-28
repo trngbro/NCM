@@ -366,40 +366,22 @@ content .main-play .duration input {
     width: 90%;
 }
 
-content .main-play .duration input[type=range]::-ms-track {
-    width: 90%;
-    height: 5px;
-    
-    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
-    background: transparent;
-    
-    /*leave room for the larger thumb to overflow with a transparent border */
-    border-color: transparent;
-    border-width: 6px 0;
+/*  */
 
-    /*remove default tick marks*/
-    color: transparent;
+content .main-play #progressbar {
+    width: 90%;
+    height: 10px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #eee;
+    border-radius: 40px;
 }
-content .main-play .duration input[type=range]::-ms-fill-lower {
-    background: #777;
-    border-radius: 10px;
-}
-content .main-play .duration input[type=range]::-ms-fill-upper {
-    background: #ddd;
-    border-radius: 10px;
-}
-content .main-play .duration input[type=range]::-webkit-slider-thumb {
-    border: none;
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background-color: goldenrod;
-}
-content .main-play .duration input[type=range]:focus::-ms-fill-lower {
-    background: #888;
-}
-content .main-play .duration content .main-play .duration input[type=range]:focus::-ms-fill-upper {
-    background: #ccc;
+
+content .main-play #progressbar #progressed {
+    width: 50%;
+    height: 100%;
+    border-radius: 40px;
+    background-color: #8b6767;
 }
 
 /* Play PHP */

@@ -22,10 +22,10 @@ if(!isset($_SESSION['name'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"  rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <script src="./cute-alert-master/cute-alert.js"></script>
     <link rel='stylesheet' href='styles/style.css'>
+    <link rel="stylesheet" href="./styles/alert.css" />
     <link rel='stylesheet' href='styles/theme.css'>
     <script src="./js/play.js"></script>
     <title>Music</title>
@@ -53,6 +53,7 @@ if(!isset($_SESSION['name'])){
                     </div>
                     <div class="btn-group navbar-nav ms-auto">
                         <a class="nav-item nav-link item-none" id="welcome">Chào buổi sáng!</a>
+                        <script src="./js/welcome.js"></script>
                         <button type="button" class="btn dropdown-toggle users-log" data-bs-toggle="dropdown"></button>
                         <ul class="dropdown-menu">
                             <?php
@@ -72,14 +73,6 @@ if(!isset($_SESSION['name'])){
                             ?>
                             <li><a class="dropdown-item" href="./logout.php"><?php if(isset($_SESSION['name']) or isset($_SESSION['adname'])) echo "Đăng xuất"; else echo "Trang chủ";?></a></li>
                         </ul>
-                        <script>
-                            if (new Date().getHours() >= 12) {
-                                document.getElementById("welcome").innerHTML = "Chào buổi chiều!";
-                            }
-                            if (new Date().getHours() >= 18 && new Date().getHours <= 3) {
-                                document.getElementById("welcome").innerHTML = "Chào buổi tối!";
-                            }
-                        </script>
                     </div>
                     <div >
                         <input type="checkbox" class="checkbox" id="chk" />
@@ -101,8 +94,8 @@ if(!isset($_SESSION['name'])){
                 <ul id="details" class="row"></ul>
             </div>
 
-            <div class="duration">
-                <input type="range" min="0" max="100" value="0" class="slider" id="duration" style="width:90%">
+            <div id="progressbar">
+                <div id="progressed"></div>
             </div>
 
             <div class="control" onclick="location.href='#top-left'">
@@ -144,51 +137,30 @@ if(!isset($_SESSION['name'])){
                     
                     var changeicon = document.getElementById('changeicon');
                     changeicon.onclick = function(){
+                        if(document.getElementById("details").childNodes[1].childNodes[1].innerText === 'Không có bài hát nào để phát!'){
+                            cuteToast({
+                                type: "error", // or 'info', 'error', 'warning'
+                                message: "Không có bài nhạc nào trong danh sách",
+                                timer: 5000
+                            })
+                            console.log("Danh sách rỗng");
+                            return;
+                        }
                         if(typeof(audio) == "undefined"){
-                            swal("Danh sách rỗng!", "Hãy thêm bài hát vào để phát nó!", "warning");
-                            console.log("Here");
-                            return
+                            autoPlay();
                         }
                         else if(changeicon.classList.contains('bi-play-circle-fill')){
                             changeicon.classList.remove('bi-play-circle-fill');
                             changeicon.classList.add('bi-pause-circle-fill');
-                            if(audio == undefined) audio.play();
+                            audio.play();
                         }
                         else if(changeicon.classList.contains('bi-pause-circle-fill')) {
                             changeicon.classList.remove('bi-pause-circle-fill');
                             changeicon.classList.add('bi-play-circle-fill');
-                            if(audio == undefined) audio.pause();
+                            audio.pause();
                         }
                     };
-                    
-                    function nextSong(){
-                        var current = document.getElementById("details").childNodes[1].childNodes[7].value;
-
-                        if(true)
-                        {
-                            $.ajax({
-                                url:"action.php",
-                                method:"POST",
-                                data:{id:current, action:"remove"},
-                                success:function()
-                                {
-                                    $.ajax({
-                                        url:"get_playlist.php",
-                                        method:"POST",
-                                        dataType:"json",
-                                        success:function(data)
-                                        {
-                                            $('#details').html(data.details);
-                                        }
-                                    });
-                                }
-                            })
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
+                   
                     // $("#details li:eq(0)").css( "background-color", "yellow" );
                 });
             </script>
