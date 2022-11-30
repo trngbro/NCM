@@ -1,10 +1,10 @@
-
-audio.addEventListener("timeupdate", function(){ updateProgress(); });
-
 var audio;
+
+audio.ontimeupdate = () => {if(Math.floor(audio.currentTime*100/audio.duration)==100) nextSong();}
 
 function autoPlay(){
     audio = new Audio("./src/sound/"+document.getElementById("details").childNodes[1].childNodes[5].value);
+    seekOn();
     audio.play();
 }
 
@@ -54,7 +54,7 @@ var progressed = document.getElementById('progressed');
 var progressbar = document.getElementById('progressbar');
 
 audio.ontimeupdate = function(e){
-    progressed.style.width = Math.floor(audio.currentTime*100/audio.duration)+"%";
+    document.getElementById("progressed").style.width = Math.floor(audio.currentTime*100/audio.duration)+"%";
 }
 
 progressbar.onclick = function(e){

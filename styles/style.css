@@ -378,7 +378,7 @@ content .main-play #progressbar {
 }
 
 content .main-play #progressbar #progressed {
-    width: 50%;
+    width: 0%;
     height: 100%;
     border-radius: 40px;
     background-color: #8b6767;

@@ -97,6 +97,13 @@ if(!isset($_SESSION['name'])){
             <div id="progressbar">
                 <div id="progressed"></div>
             </div>
+            <script>
+                function seekOn(){
+                    setInterval(function () {document.getElementById("progressed").style.width = Math.floor(audio.currentTime*100/audio.duration)+"%";}, 1);
+                    if(Math.floor(audio.currentTime*100/audio.duration)==100) nextSong();
+                }
+                audio.ontimeupdate = () => {if(Math.floor(audio.currentTime*100/audio.duration)==100) nextSong();}
+            </script>
 
             <div class="control" onclick="location.href='#top-left'">
                 <i class="bi bi-file-arrow-down-fill icon-color random-color"></i>
