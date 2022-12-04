@@ -384,6 +384,18 @@ content .main-play #progressbar #progressed {
     background-color: #8b6767;
 }
 
+/* Script */
+
+content .main-play .lyrics {
+    width: 100%;
+    height: 50vh;
+    background-color: #eee;
+    border-radius: 10px;
+    padding-left: 40px;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
 /* Play PHP */
 
 content .main-play .control {

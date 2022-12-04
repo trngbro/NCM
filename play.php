@@ -24,10 +24,10 @@ if(!isset($_SESSION['name'])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="./cute-alert-master/cute-alert.js"></script>
-    <link rel='stylesheet' href='styles/style.css'>
+    <link rel='stylesheet' href='styles/style.css?t=1'>
     <link rel="stylesheet" href="./styles/alert.css" />
     <link rel='stylesheet' href='styles/theme.css'>
-    <script src="./js/play.js"></script>
+    <script src="./js/play.js?t=902"></script>
     <title>Music</title>
 </head>
 
@@ -103,10 +103,11 @@ if(!isset($_SESSION['name'])){
                     if(Math.floor(audio.currentTime*100/audio.duration)==100) nextSong();
                 }
                 audio.ontimeupdate = () => {if(Math.floor(audio.currentTime*100/audio.duration)==100) nextSong();}
+                window.onkeydown = e => alert(e.key=='MediaPlayPause');
             </script>
 
             <div class="control" onclick="location.href='#top-left'">
-                <i class="bi bi-file-arrow-down-fill icon-color random-color"></i>
+                <i class="bi bi-file-arrow-down-fill icon-color random-color" id="download"></i>
                 <i class="bi bi-play-circle-fill icon-color random-color" id="changeicon" ></i>
                 <i class="bi bi-caret-right-fill icon-color random-color" onclick="nextSong()"></i>
                 <script src="./js/play.js"></script>
@@ -121,6 +122,25 @@ if(!isset($_SESSION['name'])){
                             this.style['color'] = '#eee';
                         }
                     }
+
+                    document.getElementById("download").onclick = function () {
+                        downloadFile    ("./src/sound/"+document.getElementById("details").childNodes[1].childNodes[5].value, 
+                                        document.getElementById("details").childNodes[1].childNodes[1].childNodes[0].innerText);    
+                    }
+                    // Copyright form https://plainenglish.io/
+                    function downloadFile(url, fileName){
+                        fetch(url, { method: 'get', mode: 'no-cors', referrerPolicy: 'no-referrer' })
+                            .then(res => res.blob())
+                            .then(res => {
+                            const aElement = document.createElement('a');
+                            aElement.setAttribute('download', fileName);
+                            const href = URL.createObjectURL(res);
+                            aElement.href = href;
+                            aElement.setAttribute('target', '_blank');
+                            aElement.click();
+                            URL.revokeObjectURL(href);
+                        });
+                    };
                 </script>
             </div>
             
@@ -153,10 +173,12 @@ if(!isset($_SESSION['name'])){
                             console.log("Danh sách rỗng");
                             return;
                         }
-                        if(typeof(audio) == "undefined"){
-                            autoPlay();
-                        }
+                        
                         else if(changeicon.classList.contains('bi-play-circle-fill')){
+                            if(typeof(audio) == "undefined"){
+                                autoPlay();
+                                audio.ontimeupdate = () => {if(Math.floor(audio.currentTime*100/audio.duration)==100) nextSong();}
+                            }
                             changeicon.classList.remove('bi-play-circle-fill');
                             changeicon.classList.add('bi-pause-circle-fill');
                             audio.play();
@@ -171,6 +193,9 @@ if(!isset($_SESSION['name'])){
                     // $("#details li:eq(0)").css( "background-color", "yellow" );
                 });
             </script>
+
+            <!-- <div class="lyrics">
+            </div> -->
         </div>
 
         <div id="left-content" class="sub-play col-12 col-lg-5">

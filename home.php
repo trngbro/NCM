@@ -4,11 +4,11 @@
 
 session_start();
 
-if(!isset($_SESSION['name'])){
-   header('location:signin.php');
+if (!isset($_SESSION['name'])) {
+    header('location:signin.php');
 }
 
-if(isset($_POST['search'])){
+if (isset($_POST['search'])) {
     header('location:play.php');
 }
 
@@ -23,6 +23,7 @@ if(isset($_POST['search'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel='stylesheet' href='styles/theme.css'>
     <link rel='stylesheet' href='styles/style.css'>
     <title>Music</title>
@@ -67,7 +68,7 @@ if(isset($_POST['search'])){
                             }
                         </script>
                     </div>
-                    <div >
+                    <div>
                         <input type="checkbox" class="checkbox" id="chk" />
                         <label class="label" for="chk">
                             <i class="bi bi-moon-fill"></i>
@@ -79,28 +80,26 @@ if(isset($_POST['search'])){
             </div>
         </nav>
     </div>
+
     <div id="slider" class="silder" style="background-color: #eee;">
         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="10000" style="background-color: #fddddd;" e>
-                    <img src="https://dummyimage.com/1000x300/000/fff" class="d-block w-100" alt="...">
+                    <img src="img/indie.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+                        <h5>Nhạc Indie</h5>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">
-                    <img src="https://dummyimage.com/1000x300/000/fff" class="d-block w-100" alt="...">
+                    <img src="img/old.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
+                        <h5>Nhạc cổ</h5>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://dummyimage.com/1000x300/000/fff" class="d-block w-100" alt="...">
+                    <img src="img/gold.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
+                        <h5>Nhạc vàng</h5>
                     </div>
                 </div>
             </div>
@@ -121,42 +120,45 @@ if(isset($_POST['search'])){
             <h2>Nhạc ngẫu hứng</h2>
 
             <div class="suggest">
-                <?php 
-                    $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY RAND() LIMIT 10");
+                <?php
+                $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY RAND() LIMIT 10");
                 ?>
                 <?php foreach ($rows as $row) : ?>
-                    <div class="item">
-                        <img src="<?php echo './src/image/'.$row["cover"]; ?>" alt="">
-                        <p><?php echo $row["name"]; ?></p>
-                        <p><?php echo $row["singer"]; ?></p>
+                    <div class="item" id="<?php echo $row["id"]; ?>">
+                        <img src="<?php echo './src/image/' . $row["cover"]; ?>" alt="">
+                        <p id="name<?php echo $row["id"]; ?>"><?php echo $row["name"]; ?></p>
+                        <p id="singer<?php echo $row["id"]; ?>"><?php echo $row["singer"]; ?></p>
+                        <input type="hidden" id="music<?php echo $row["id"]; ?>" value="<?php echo $row["music"]; ?>" />
                     </div>
                 <?php endforeach; ?>
-                <script src="./js/home.js"></script>
 
-                
+
             </div>
 
             <h2>Nhạc mới tải lên</h2>
             <div class="new">
-                <?php 
-                    $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC LIMIT 10");
+                <?php
+                $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC LIMIT 10");
                 ?>
                 <?php foreach ($rows as $row) : ?>
-                    <div class="item">
-                        <img src="<?php echo './src/image/'.$row["cover"]; ?>" alt="">
-                        <p><?php echo $row["name"]; ?></p>
-                        <p><?php echo $row["singer"]; ?></p>
+                    <div class="item" id="<?php echo $row["id"]; ?>">
+                        <img src="<?php echo './src/image/' . $row["cover"]; ?>" alt="">
+                        <p id="name<?php echo $row["id"]; ?>"><?php echo $row["name"]; ?></p>
+                        <p id="singer<?php echo $row["id"]; ?>"><?php echo $row["singer"]; ?></p>
+                        <input type="hidden" id="music<?php echo $row["id"]; ?>" value="<?php echo $row["music"]; ?>" />
                     </div>
                 <?php endforeach; ?>
+
             </div>
+            <script src="./js/home.js?=12"></script>
         </div>
 
         <div class="sub-content col-0 col-lg-3">
             <h2>BXH Bài hát</h2>
             <div class="BXH">
-                <?php 
-                    $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY view DESC LIMIT 10");
-                    $i = 1;
+                <?php
+                $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY view DESC LIMIT 10");
+                $i = 1;
                 ?>
                 <?php foreach ($rows as $row) : ?>
                     <li class="songItem">
@@ -170,14 +172,15 @@ if(isset($_POST['search'])){
             </div>
         </div>
     </content>
-<script>
-    const chk = document.getElementById('chk');
+    <script>
+        const chk = document.getElementById('chk');
 
-    chk.addEventListener('change', () => {
-        document.getElementById("content-music").classList.toggle('dark');
-        document.getElementById("carouselExampleDark").classList.toggle('dark');
-        document.getElementById("slider").classList.toggle('dark');
-    });
-</script>
+        chk.addEventListener('change', () => {
+            document.getElementById("content-music").classList.toggle('dark');
+            document.getElementById("carouselExampleDark").classList.toggle('dark');
+            document.getElementById("slider").classList.toggle('dark');
+        });
+    </script>
 </body>
+
 </html>

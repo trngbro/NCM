@@ -1,5 +1,5 @@
 <?php
-
+use PHPMailer\PHPMailer\PHPMailer;
 @include 'config.php';
 
 if(isset($_POST['submit'])){
@@ -21,10 +21,44 @@ if(isset($_POST['submit'])){
 
         if($pass != $cpass){
             $error[] = 'Các mật khẩu không khớp!';
-        }else{
-            $insert = "INSERT INTO accounts(name, email, password, user_type) VALUES('$name','$email','$pass','user')";
+        }else{  
+            $insert = "INSERT INTO accounts(name, email, password, user_type, flag) VALUES('$name','$email','$pass','user','null')";
             mysqli_query($conn, $insert);
-            header('location:signin.php');
+
+            require_once "PHPMailer/PHPMailer.php";
+            require_once "PHPMailer/SMTP.php";
+            require_once "PHPMailer/Exception.php";
+
+            $mail = new PHPMailer();
+
+            //SMTP Settings
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = "nguyentrungnghiacmp528@gmail.com"; //enter you email address
+            $mail->Password = 'jygwqxiczzyuvgzp'; //enter you email password
+            $mail->Port = 465;
+            $mail->SMTPSecure = "ssl";
+
+            //Email Settings
+            $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+            $insert = "INSERT INTO verify(email, code) VALUES('$email','$verification_code')";
+            mysqli_query($conn, $insert);
+
+            $mail->isHTML(true);
+            $mail->setFrom($email, $name);
+            $mail->addAddress($email); //enter you email address
+            $mail->Subject = ("Email verification");
+            $mail->Body = '<p>Your verification code is: <b style="font-size: 30px;">' . $verification_code . '</b></p>';
+    
+            if ($mail->send()) {
+                $status = "success";
+                $response = "Email is sent!";
+            } else {
+                $status = "failed";
+                $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
+            }
+            header("Location: account-verification.php?email=" . $email);
         }
     }
 
@@ -43,7 +77,7 @@ if(isset($_POST['submit'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script src="./cute-alert-master/cute-alert.js"></script>
     <link rel='stylesheet' href='styles/style.css'>

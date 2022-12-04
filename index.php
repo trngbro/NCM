@@ -22,15 +22,14 @@ if (isset($_POST['search'])) {
 <html lang="vi">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <link rel='stylesheet' href='styles/style.css'>
-  <link rel='stylesheet' href='styles/theme.css'>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel='stylesheet' href='styles/style.css'>
+    <link rel='stylesheet' href='styles/theme.css'>
 
   <title>Music</title>
 </head>
@@ -105,65 +104,70 @@ if (isset($_POST['search'])) {
     </div>
   </div>
 
-  <content id="content-music" class="row w-100">
-    <div class="main-content col-12 col-lg-9">
-      <h2>Nhạc ngẫu hứng</h2>
+  <content id="content-music" class="row w-100" style="margin:0;">
+        <div class="main-content col-12 col-lg-9">
+            <h2>Nhạc ngẫu hứng</h2>
 
-      <div class="suggest">
-        <?php
-        $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY RAND() LIMIT 10");
-        ?>
-        <?php foreach ($rows as $row) : ?>
-          <div class="item">
-            <img src="<?php echo './src/image/' . $row["cover"]; ?>" alt="">
-            <p><?php echo $row["name"]; ?></p>
-            <p><?php echo $row["singer"]; ?></p>
-          </div>
-        <?php endforeach; ?>
-      </div>
+            <div class="suggest">
+                <?php
+                $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY RAND() LIMIT 10");
+                ?>
+                <?php foreach ($rows as $row) : ?>
+                    <div class="item" id="<?php echo $row["id"]; ?>">
+                        <img src="<?php echo './src/image/' . $row["cover"]; ?>" alt="">
+                        <p id="name<?php echo $row["id"]; ?>"><?php echo $row["name"]; ?></p>
+                        <p id="singer<?php echo $row["id"]; ?>"><?php echo $row["singer"]; ?></p>
+                        <input type="hidden" id="music<?php echo $row["id"]; ?>" value="<?php echo $row["music"]; ?>" />
+                    </div>
+                <?php endforeach; ?>
 
-      <h2>Nhạc mới tải lên</h2>
-      <div class="new">
-        <?php
-        $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC LIMIT 10");
-        ?>
-        <?php foreach ($rows as $row) : ?>
-          <div class="item">
-            <img src="<?php echo './src/image/' . $row["cover"]; ?>" alt="">
-            <p><?php echo $row["name"]; ?></p>
-            <p><?php echo $row["singer"]; ?></p>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
 
-    <div class="sub-content col-0 col-lg-3">
-      <h2>BXH Bài hát</h2>
-      <div class="BXH">
-        <?php
-        $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY view DESC LIMIT 10");
-        $i = 1;
-        ?>
-        <?php foreach ($rows as $row) : ?>
-          <li class="songItem">
-            <span><?php echo $i++; ?></span>
-            <h5><?php echo $row["name"]; ?><br>
-              <div class="subtitle"><?php echo $row["singer"]; ?></div>
-            </h5>
-            <i class="bi bi-play-fill playListPlay" id="1"></i>
-          </li>
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </content>
-</body>
-<script>
-    const chk = document.getElementById('chk');
+            </div>
 
-    chk.addEventListener('change', () => {
-        document.getElementById("content-music").classList.toggle('dark');
-        document.getElementById("carouselExampleDark").classList.toggle('dark');
-        document.getElementById("slider").classList.toggle('dark');
-    });
-</script>
+            <h2>Nhạc mới tải lên</h2>
+            <div class="new">
+                <?php
+                $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC LIMIT 10");
+                ?>
+                <?php foreach ($rows as $row) : ?>
+                    <div class="item" id="<?php echo $row["id"]; ?>">
+                        <img src="<?php echo './src/image/' . $row["cover"]; ?>" alt="">
+                        <p id="name<?php echo $row["id"]; ?>"><?php echo $row["name"]; ?></p>
+                        <p id="singer<?php echo $row["id"]; ?>"><?php echo $row["singer"]; ?></p>
+                        <input type="hidden" id="music<?php echo $row["id"]; ?>" value="<?php echo $row["music"]; ?>" />
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+            <script src="./js/home.js?=12"></script>
+        </div>
+
+        <div class="sub-content col-0 col-lg-3">
+            <h2>BXH Bài hát</h2>
+            <div class="BXH">
+                <?php
+                $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY view DESC LIMIT 10");
+                $i = 1;
+                ?>
+                <?php foreach ($rows as $row) : ?>
+                    <li class="songItem">
+                        <span><?php echo $i++; ?></span>
+                        <h5><?php echo $row["name"]; ?><br>
+                            <div class="subtitle"><?php echo $row["singer"]; ?></div>
+                        </h5>
+                        <i class="bi bi-play-fill playListPlay" id="1"></i>
+                    </li>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </content>
+    <script>
+        const chk = document.getElementById('chk');
+
+        chk.addEventListener('change', () => {
+            document.getElementById("content-music").classList.toggle('dark');
+            document.getElementById("carouselExampleDark").classList.toggle('dark');
+            document.getElementById("slider").classList.toggle('dark');
+        });
+    </script>
 </html>
