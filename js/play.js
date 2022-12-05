@@ -8,9 +8,7 @@ function autoPlay(){
 }
 
 function nextSong(){
-    endSong();
-
-    while(!(document.getElementById("details").childNodes[1].childNodes[1].innerText === 'Không có bài hát nào để phát!')){
+    if(true){
         audio.pause();
         var current = document.getElementById("details").childNodes[1].childNodes[7].value;
 
@@ -36,12 +34,6 @@ function nextSong(){
         audio.play();
         endSong();
     }
-    cuteToast({
-        type: "error", // or 'info', 'error', 'warning'
-        message: "Không có bài nhạc nào trong danh sách",
-        timer: 5000
-    })
-    console.log("Danh sách rỗng");
 }
 
 // 
@@ -61,7 +53,7 @@ progressbar.onclick = function(e){
 }
 
 function endSong(){
-    if(typeof(audio) == "undefined"){
+    if(!document.getElementById("details").childNodes[1].childNodes[1].innerText === 'Không có bài hát nào để phát!'){
         return null;
     }
 

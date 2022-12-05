@@ -27,7 +27,7 @@ if(!isset($_SESSION['name'])){
     <link rel='stylesheet' href='styles/style.css?t=1'>
     <link rel="stylesheet" href="./styles/alert.css" />
     <link rel='stylesheet' href='styles/theme.css'>
-    <script src="./js/play.js?t=902"></script>
+    <script src="./js/play.js?t=3"></script>
     <title>Music</title>
 </head>
 
