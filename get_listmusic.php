@@ -1,5 +1,7 @@
 <?php
 
+// Lấy danh sách nhạc
+
 include('config.php');
 
 $query = "SELECT * FROM songs ORDER BY id DESC";

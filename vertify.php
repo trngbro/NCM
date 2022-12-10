@@ -1,4 +1,7 @@
 <?php
+
+    // Khai báo để sử dụng Email
+
     use PHPMailer\PHPMailer\PHPMailer;
 
     if (isset($_POST['name']) && isset($_POST['email'])) {
@@ -13,7 +16,7 @@
 
         $mail = new PHPMailer();
 
-        //SMTP Settings
+        //SMTP
         $mail->isSMTP();
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;

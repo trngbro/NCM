@@ -4,17 +4,14 @@
 
 session_start();
 
-
-
 if(!isset($_SESSION['adname'])){
     header('location:signin.php');
 }
 
 if(isset($_SESSION['name'])){
    header('location:home.php');
-   echo "E";
 }
-
+// Nếu tải lên nhạc thì sẽ lấy các thông tin
 if(isset($_POST["submit"])){
     $filename = mysqli_real_escape_string($conn, $_POST['filename']);
     $fileown  = mysqli_real_escape_string($conn, $_POST['fileown']);
@@ -28,6 +25,7 @@ if(isset($_POST["submit"])){
         echo '<script> swal("Lỗi tải lên ảnh!"); </script>';
     }
     else{
+        // Chuỗi lệnh mã hoá và truyền dữ liệu sang server  (xampp)
         $filemp3_name = $_FILES["filemp3"]["name"];
         $musicExtension = explode('.', $filemp3_name);
         $musicExtension = strtolower(end($musicExtension));

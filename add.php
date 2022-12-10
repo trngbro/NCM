@@ -1,5 +1,5 @@
 <?php
-
+// Trang thêm tài khoảng admin
 @include 'config.php';
 
 session_start();
@@ -94,6 +94,7 @@ if(isset($_POST['submit'])) {
                             <li><a class="dropdown-item" href="./logout.php">Đăng xuất</a></li>
                         </ul>
                         <script>
+                            // Cài đặt lại lời chào trang web dựa vào thời gian thực
                             if (new Date().getHours() >= 12) {
                                 document.getElementById("welcome").innerHTML = "Chào buổi chiều!";
                             }
@@ -133,6 +134,7 @@ if(isset($_POST['submit'])) {
 
         <script>
             function checkPassword(form) {
+                // Hàm gọi thông báo (sử dụng thư viện ngoài)
                 if (form.password.value != form.repassword.value) {
                     cuteToast({
                         type: "warning", // or 'info', 'error', 'warning'

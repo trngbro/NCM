@@ -6,7 +6,7 @@ if (isset($_POST["verify_email"]))
     $email = $_POST["email"];
     $verification_code = $_POST["verification_code"];
 
-    // mark email as verified
+    // Đánh dấu tài khoản đã xác thực
     $sql = "UPDATE verify INNER JOIN accounts ON verify.email = accounts.email SET accounts.flag=NOW() WHERE accounts.email = '" . $email . "' AND verify.code = '" . $verification_code . "'";
     $result  = mysqli_query($conn, $sql);
 

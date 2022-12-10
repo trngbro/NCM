@@ -1,5 +1,7 @@
 <?php
 
+    // Xoá hết toàn bộ session
+    
     @include 'config.php';
 
     session_start();

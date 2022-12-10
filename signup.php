@@ -31,23 +31,23 @@ if(isset($_POST['submit'])){
 
             $mail = new PHPMailer();
 
-            //SMTP Settings
+            // Cài đặt SMTP
             $mail->isSMTP();
             $mail->Host = "smtp.gmail.com";
             $mail->SMTPAuth = true;
-            $mail->Username = "nguyentrungnghiacmp528@gmail.com"; //enter you email address
-            $mail->Password = 'jygwqxiczzyuvgzp'; //enter you email password
+            $mail->Username = "nguyentrungnghiacmp528@gmail.com";
+            $mail->Password = 'jygwqxiczzyuvgzp';
             $mail->Port = 465;
             $mail->SMTPSecure = "ssl";
 
-            //Email Settings
+            // Cài đặt Email
             $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
             $insert = "INSERT INTO verify(email, code) VALUES('$email','$verification_code')";
             mysqli_query($conn, $insert);
 
             $mail->isHTML(true);
             $mail->setFrom($email, $name);
-            $mail->addAddress($email); //enter you email address
+            $mail->addAddress($email);
             $mail->Subject = ("Email verification");
             $mail->Body = '<p>Your verification code is: <b style="font-size: 30px;">' . $verification_code . '</b></p>';
     
@@ -119,6 +119,7 @@ if(isset($_POST['submit'])){
         </style>
 
         <script>
+            // Hàm kiểm tra các mật khẩu có khớp với nhau hay không
             function checkPassword(form) {
                 if (form.password.value != form.repassword.value) {
                     cuteToast({

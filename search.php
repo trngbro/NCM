@@ -1,5 +1,7 @@
 <?php
 
+// Thực hiện truy vấn search
+
 @include 'config.php';
 
 $stmt = $pdo->prepare("SELECT * FROM `songs` WHERE `tag` LIKE ? OR `lyrics` LIKE ?");

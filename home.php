@@ -121,6 +121,7 @@ if (isset($_POST['search'])) {
 
             <div class="suggest">
                 <?php
+                // Lấy danh sách 10 bài hát ngẫu nhiên
                 $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY RAND() LIMIT 10");
                 ?>
                 <?php foreach ($rows as $row) : ?>
@@ -138,6 +139,7 @@ if (isset($_POST['search'])) {
             <h2>Nhạc mới tải lên</h2>
             <div class="new">
                 <?php
+                // Lấy danh sách 10 bài hát được tải lên gần nhất
                 $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC LIMIT 10");
                 ?>
                 <?php foreach ($rows as $row) : ?>
@@ -157,6 +159,7 @@ if (isset($_POST['search'])) {
             <h2>BXH Bài hát</h2>
             <div class="BXH">
                 <?php
+                // Lấy danh sách 10 bài hát được nghe nhiều nhất
                 $rows = mysqli_query($conn, "SELECT * FROM songs ORDER BY view DESC LIMIT 10");
                 $i = 1;
                 ?>
@@ -173,6 +176,7 @@ if (isset($_POST['search'])) {
         </div>
     </content>
     <script>
+        // Chuyển đổi nền
         const chk = document.getElementById('chk');
 
         chk.addEventListener('change', () => {

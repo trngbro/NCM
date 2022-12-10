@@ -2,6 +2,8 @@
 
 session_start();
 
+// Lấy bộ bài hát đang trong danh sách
+
 $total = 0;
 
 $output = '';

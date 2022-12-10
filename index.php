@@ -17,7 +17,7 @@ if (isset($_POST['search'])) {
 }
 
 ?>
-
+<!-- Mô tả tương tự home.php -->
 <!doctype html>
 <html lang="vi">
 

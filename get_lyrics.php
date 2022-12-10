@@ -1,5 +1,7 @@
 <?php
 
+// Lấy lời bài hát
+
 include('config.php');
 
 $query = "SELECT * FROM songs WHERE id = ?";

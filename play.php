@@ -42,6 +42,7 @@ if(!isset($_SESSION['name'])){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
+                        <!-- Thanh tìm kiếm, gọi hàm ajsearch -->
                         <form class="input-group" method="POST" onsubmit="return ajsearch();">
                             <input type="text" id="search" autocomplete="off" class="form-control" placeholder="Tìm kiếm bài hát">
                             <div class="input-group-append">
@@ -98,6 +99,7 @@ if(!isset($_SESSION['name'])){
                 <div id="progressed"></div>
             </div>
             <script>
+                // Thời gian phát nhạc của các bài hát
                 function seekOn(){
                     setInterval(function () {document.getElementById("progressed").style.width = Math.floor(audio.currentTime*100/audio.duration)+"%";}, 1);
                     if(Math.floor(audio.currentTime*100/audio.duration)==100) nextSong();
@@ -127,7 +129,7 @@ if(!isset($_SESSION['name'])){
                         downloadFile    ("./src/sound/"+document.getElementById("details").childNodes[1].childNodes[5].value, 
                                         document.getElementById("details").childNodes[1].childNodes[1].childNodes[0].innerText);    
                     }
-                    // Copyright form https://plainenglish.io/
+                    // Copyright from https://plainenglish.io/
                     function downloadFile(url, fileName){
                         fetch(url, { method: 'get', mode: 'no-cors', referrerPolicy: 'no-referrer' })
                             .then(res => res.blob())
@@ -148,6 +150,7 @@ if(!isset($_SESSION['name'])){
                 $(document).ready(function(){
                     load_data();
 
+                    // Lấy dữ liệu từ get_playlist rán vào id details
                     function load_data()
                     {
                         $.ajax({
@@ -161,7 +164,7 @@ if(!isset($_SESSION['name'])){
                         });
                     }    
 
-                    
+                    // Thay đổi bật/tắt nhạc
                     var changeicon = document.getElementById('changeicon');
                     changeicon.onclick = function(){
                         if(document.getElementById("details").childNodes[1].childNodes[1].innerText === 'Không có bài hát nào để phát!'){
@@ -201,7 +204,8 @@ if(!isset($_SESSION['name'])){
         <div id="left-content" class="sub-play col-12 col-lg-5">
             <div class="container vertical-scrollable" >
                 <?php 
-                    $results = mysqli_query($conn, "SELECT * FROM songs ORDER BY id ASC");
+                    // Lấy danh sách bài hát ra để người dùng chọn bài hát 
+                    $results = mysqli_query($conn, "SELECT * FROM songs ORDER BY id DESC");
                 ?>
                 <div class="row" id="wrapper" style="width:100%">
                 <li id="top-right"></li>   
@@ -224,6 +228,7 @@ if(!isset($_SESSION['name'])){
                 </div>
             </div>
             <script>
+                // Tìm kiếm bài hát, sử dụng ajax kết hợp với form
                 function ajsearch () {
                     // Nhận yêu cầu tìm kiếm
                     var data = new FormData();
@@ -257,7 +262,9 @@ if(!isset($_SESSION['name'])){
                     return false;
                 }
 
+                
                 $(document).ready(function(){
+                    // Nhận sự kiện click vào để chơi nhạc thì sẽ gọi action.php, truyền các tham số vào đó
                     $(document).on('click', '.add_to_play', function(){
                         var id = $(this).attr("id");
                         var name = $('#name'+id+'').val();
@@ -286,7 +293,7 @@ if(!isset($_SESSION['name'])){
                         }
                     });
 
-
+                    // Nhận sự kiện click vào để xoá nhạc thì sẽ gọi action.php, truyền các tham số vào đó
                     $(document).on('click', '.delete', function(){
                         var id = $(this).attr("id");
                         var action = 'remove';
@@ -316,6 +323,7 @@ if(!isset($_SESSION['name'])){
                         }
                     });
 
+                    // Nhận sự kiện click vào để xoá tất cả nhạc thì sẽ gọi action.php, truyền các tham số vào đó
                     $(document).on('click', '#clear_playlist', function(){
                         var action = 'empty';
                         $.ajax({
